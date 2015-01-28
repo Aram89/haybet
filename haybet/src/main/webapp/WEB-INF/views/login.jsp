@@ -68,7 +68,7 @@
 										</div>
 										<div class="row">
 											<div class="col-xs-12">
-												<button type="submit" class="btn btn-success col-xs-12">Login</button>
+												<button type="submit" value="login" class="btn btn-success col-xs-12">Login</button>
 											</div>
 										</div>
 										<div class="row">
