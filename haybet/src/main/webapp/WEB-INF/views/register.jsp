@@ -3,44 +3,13 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
-<!-- <html> -->
-<!--     <head> -->
-<!--     </head> -->
-<!--     <body> -->
-<!--         <h3>Welcome To Virtual bettings</h3> -->
-<%--         <form:form method="POST"  modelAttribute="user"> --%>
-<!--              <table> -->
-<!--                 <tr> -->
-<!--                     <td><label for="nickName">Login: </label> </td> -->
-<%-- 					<td><form:input path="nickName" id="nickName"/></td> --%>
-
-<!-- 				</tr> -->
-<!--                 <tr> -->
-<!--                     <td><label for="password">Password: </label> </td> -->
-<%-- 					<td><form:input path="password" id="password"/></td> --%>
-
-<!--                 </tr>  -->
-<!--                 <tr> -->
-<!--                     <td><label for="email">email: </label> </td> -->
-<%-- 					<td><form:input path="email" id="email"/></td> --%>
-
-<!--                 </tr>                 -->
-<!--                 <tr> -->
-<!--                     <td><input type="submit" value="register"/></td> -->
-<!--                 </tr> -->
-<!--             </table> -->
-<%--         </form:form> --%>
-<!--     </body> -->
-<!-- </html> -->
 <!DOCTYPE html>
 <html>
-
-
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<title>Cube - Bootstrap Admin Template</title>
+<title>Haybet - Registration</title>
 
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap/bootstrap.min.css" />" />
 
@@ -57,9 +26,9 @@
 
 <link type="image/x-icon" href="<c:url value="/resources/img/favicon.png" />" rel="shortcut icon" />
 <!--[if lt IE 9]>
-		<script src="<c:url value="/resources/js/html5shiv.js"></script>
-		<script src="<c:url value="/resources/js/respond.min.js"></script>
-	<![endif]-->
+		<script src="<c:url value="/resources/js/html5shiv.js" />"></script>
+		<script src="<c:url value="/resources/js/respond.min.js" />"></script>
+	<![endif] -->
 </head>
 <body id="login-page">
 	<div class="container">
@@ -77,23 +46,21 @@
 								<form:form method="POST"  modelAttribute="user">
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-user"></i></span>
-										<input class="form-control" type="text"
-											placeholder="Full name">
+										<input class="form-control" type="text" placeholder="Nick Name" name="nickName">
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon"><i
-											class="fa fa-envelope"></i></span> <input class="form-control"
-											type="text" placeholder="Email address">
+											class="fa fa-envelope"></i></span>
+											<input class="form-control" type="text" placeholder="Email address" name="email">
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-										<input type="password" class="form-control"
-											placeholder="Enter password">
+										<input type="password" class="form-control" placeholder="Enter password" name="password">
 									</div>
 									<div class="input-group">
 										<span class="input-group-addon"><i
-											class="fa fa-unlock-alt"></i></span> <input type="password"
-											class="form-control" placeholder="Re-enter password">
+											class="fa fa-unlock-alt"></i></span>
+											<input type="password" class="form-control" placeholder="Re-enter password" name="re-password">
 									</div>
 									<div id="remember-me-wrapper">
 										<div class="row">
