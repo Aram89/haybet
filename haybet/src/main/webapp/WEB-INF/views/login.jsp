@@ -104,7 +104,7 @@
 			</div>
 		</div>
 	</div>
-	<%@include file="config-tool.jsp" %>
+	<%@include file="modules/config-tool.jsp" %>
 
 	<script src="<c:url value="/resources/js/demo-skin-changer.js" />"></script>
 	<script src="<c:url value="/resources/js/jquery.js" />"></script>
