@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,8 +11,7 @@ import javax.persistence.Table;
 @Table(name="country")
 public class Country implements Serializable{
 	
-	@Id 
-	@GeneratedValue	
+	@Id
 	@Column(name="id")
 	private int id;
 		
@@ -63,6 +61,7 @@ public class Country implements Serializable{
 	
 	public void setTotoID(int totoID){
 		this.totoID = totoID;
+		this.id = totoID;
 	}
 	
 	public int getTotoID(){

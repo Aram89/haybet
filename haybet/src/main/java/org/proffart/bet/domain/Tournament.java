@@ -4,11 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +12,6 @@ import javax.persistence.Table;
 public class Tournament implements Serializable {
 	
 	@Id 
-	@GeneratedValue
 	@Column(name="id")
 	private int id;
 	
@@ -72,6 +67,7 @@ public class Tournament implements Serializable {
 	
 	public void setTotoID(int totoID){
 		this.totoID = totoID;
+		this.id = totoID;
 	}
 	
 	public int getTotoID(){
@@ -80,7 +76,7 @@ public class Tournament implements Serializable {
 	
 	
     public void setCountryID(int countryID){
-		this.countryID = countryTotoID;
+		this.countryID = countryID;
 	}
 	
 	public int getCountryId(){
@@ -89,6 +85,7 @@ public class Tournament implements Serializable {
 	
 	public void setCountryTotoID(int countryTotoID){
 		this.countryTotoID = countryTotoID;
+		this.countryID = countryTotoID;
 	}
 	
 	public int getCountryTotoId(){
