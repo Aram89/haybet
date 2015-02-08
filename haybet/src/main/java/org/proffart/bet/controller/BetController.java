@@ -1,8 +1,15 @@
 package org.proffart.bet.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
-import org.proffart.bet.service.UserService;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.type.TypeFactory;
+import org.proffart.bet.domain.Country;
+import org.proffart.bet.domain.Test;
+import org.proffart.bet.domain.Tournament;
+import org.proffart.bet.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,9 +23,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class BetController {
 	@Autowired
-	UserService service;
+	GameService service;
 		
-	@RequestMapping(value="bets", method = RequestMethod.GET)
+	@RequestMapping(value="games", method = RequestMethod.GET)
+	public String showLoginForm(ModelMap model){
+		Country country = new Country();
+		Test test = new Test();
+		test.setTest("TEST");
+		test.setTournaments(service.getTournaments());
+		model.addAttribute("country",country);
+		model.addAttribute("test",test );
+		return "games";
+	}
+	
+	@RequestMapping(value="aaa", method = RequestMethod.GET)
 	public String showBets(ModelMap model, HttpSession session){
 		/*		
 		String sid = session.getId();
@@ -30,6 +48,20 @@ public class BetController {
 		}		
 		return new ModelAndView("bets", "user",user);
 		*/
-		return "bets";
+		try{
+			String countries = FileReader.readJson("C:\\Users\\Aram\\Downloads\\country.json");
+			String tournaments = FileReader.readJson("C:\\Users\\Aram\\Downloads\\tournament.json");
+			ObjectMapper mapper = new ObjectMapper();
+			List<Country> c = mapper.readValue(countries, TypeFactory.defaultInstance().constructCollectionType(List.class,  
+					   Country.class));
+			List<Tournament> t = mapper.readValue(tournaments, TypeFactory.defaultInstance().constructCollectionType(List.class,  
+					   Tournament.class));
+			service.addCountries(c);
+			service.addTournaments(t);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return "games";
 	}	
 }

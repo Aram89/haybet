@@ -86,5 +86,15 @@ public class User {
 	public void setId(int id){
 		this.id = id;
 	}
+	
+	private String a;
+
+	public String getA() {
+		return a;
+	}
+
+	public void setA(String a) {
+		this.a = a;
+	}
 
 }

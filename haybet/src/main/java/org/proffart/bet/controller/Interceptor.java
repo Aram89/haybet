@@ -29,6 +29,7 @@ public class Interceptor implements HandlerInterceptor{
 		HttpSession session = req.getSession();
 		
 		System.out.println("pre handle");
+		System.out.println("COUNTRIES ARE:" + FileReader.readJson("C:\\Users\\Aram\\Downloads\\country.json"));
 		
 		String isLogined = (String) session.getAttribute("userobj");
 		

@@ -3,6 +3,7 @@ package org.proffart.bet.service;
 import javax.transaction.Transactional;
 
 import org.proffart.bet.dao.UserDAO;
+import org.proffart.bet.dao.UserDAOImpl;
 import org.proffart.bet.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
