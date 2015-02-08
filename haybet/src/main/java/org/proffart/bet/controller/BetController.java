@@ -15,9 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.security.*;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Controller
@@ -25,29 +22,16 @@ public class BetController {
 	@Autowired
 	GameService service;
 		
-	@RequestMapping(value="games", method = RequestMethod.GET)
-	public String showLoginForm(ModelMap model){
-		Country country = new Country();
-		Test test = new Test();
-		test.setTest("TEST");
-		test.setTournaments(service.getTournaments());
-		model.addAttribute("country",country);
-		model.addAttribute("test",test );
+        @RequestMapping(value="games", method = RequestMethod.GET)
+	public String getEvents(ModelMap model){
+		Events event = new Events();
+		event.setTournamnetsByCounty(service.getTournamnetsByCounty());
+		model.addAttribute("event",event);
 		return "games";
 	}
 	
 	@RequestMapping(value="aaa", method = RequestMethod.GET)
-	public String showBets(ModelMap model, HttpSession session){
-		/*		
-		String sid = session.getId();
-		System.out.println(sid);
-		User user = (User) session.getAttribute("userobj");
-		System.out.println(user);
-		if(user != null){
-			model.addAttribute("nickName",user.getNickName());
-		}		
-		return new ModelAndView("bets", "user",user);
-		*/
+	public String insertEventsFromJSON(ModelMap model, HttpSession session){
 		try{
 			String countries = FileReader.readJson("D:\\WebServers\\home\\test4.loc\\www\\toto\\country.json");
 			String tournaments = FileReader.readJson("D:\\WebServers\\home\\test4.loc\\www\\toto\\tournament.json");
