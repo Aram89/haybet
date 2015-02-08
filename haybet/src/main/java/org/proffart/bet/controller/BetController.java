@@ -49,13 +49,11 @@ public class BetController {
 		return new ModelAndView("bets", "user",user);
 		*/
 		try{
-			String countries = FileReader.readJson("C:\\Users\\Aram\\Downloads\\country.json");
-			String tournaments = FileReader.readJson("C:\\Users\\Aram\\Downloads\\tournament.json");
+			String countries = FileReader.readJson("D:\\WebServers\\home\\test4.loc\\www\\toto\\country.json");
+			String tournaments = FileReader.readJson("D:\\WebServers\\home\\test4.loc\\www\\toto\\tournament.json");
 			ObjectMapper mapper = new ObjectMapper();
-			List<Country> c = mapper.readValue(countries, TypeFactory.defaultInstance().constructCollectionType(List.class,  
-					   Country.class));
-			List<Tournament> t = mapper.readValue(tournaments, TypeFactory.defaultInstance().constructCollectionType(List.class,  
-					   Tournament.class));
+			List<Country> c = mapper.readValue(countries, TypeFactory.defaultInstance().constructCollectionType(List.class, Country.class));
+			List<Tournament> t = mapper.readValue(tournaments, TypeFactory.defaultInstance().constructCollectionType(List.class, Tournament.class));
 			service.addCountries(c);
 			service.addTournaments(t);
 		}

@@ -21,13 +21,13 @@ public class Game {
 	private int tournamentID;
 	
 	@Column(name="name_en")
-	private String nameEn;
+	private String nameEN;
 	
 	@Column(name="name_am")
-	private String nameAm;
+	private String nameAM;
 	
 	@Column(name="name_ru")
-	private String nameRu;
+	private String nameRU;
 	
 	@Column(name="date")
 	private Date date;
@@ -96,7 +96,7 @@ public class Game {
 	private double m2_s;
 	
 	@Column(name="_x_totobet_id")
-	private int totID;
+	private int totoID;
 	
 	@Column(name="_x_tournament_totobet_id")
 	private int tournamentTotoID;	
@@ -128,28 +128,28 @@ public class Game {
 		this.tournamentID = tournamentID;
 	}
 
-	public String getNameEn() {
-		return nameEn;
+	public String getNameEN() {
+		return nameEN;
 	}
 
-	public void setNameEn(String nameEn) {
-		this.nameEn = nameEn;
+	public void setNameEN(String nameEN) {
+		this.nameEN = nameEN;
 	}
 
-	public String getNameAm() {
-		return nameAm;
+	public String getNameAM() {
+		return nameAM;
 	}
 
-	public void setNameAm(String nameAm) {
-		this.nameAm = nameAm;
+	public void setNameAM(String nameAM) {
+		this.nameAM = nameAM;
 	}
 
-	public String getNameRu() {
-		return nameRu;
+	public String getNameRU() {
+		return nameRU;
 	}
 
-	public void setNameRu(String nameRu) {
-		this.nameRu = nameRu;
+	public void setNameRU(String nameRU) {
+		this.nameRU = nameRU;
 	}
 
 	public Date getDate() {
@@ -328,12 +328,12 @@ public class Game {
 		this.m2_s = m2_s;
 	}
 
-	public int getTotID() {
-		return totID;
+	public int getTotoID() {
+		return totoID;
 	}
 
-	public void setTotID(int totID) {
-		this.totID = totID;
+	public void setTotoID(int totoID) {
+		this.totoID = totoID;
 	}
 
 	public int getTournamentTotoID() {

@@ -1,15 +1,11 @@
 package org.proffart.bet.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,18 +13,18 @@ import javax.persistence.Table;
 public class Country implements Serializable{
 	
 	@Id 
-	@GeneratedValue
+	@GeneratedValue	
 	@Column(name="id")
 	private int id;
 		
 	@Column(name="name_en")
-	private String nameEn; 
+	private String nameEN; 
 	
 	@Column(name="name_am")
-	private String nameAm; 
+	private String nameAM; 
 	
 	@Column(name="name_ru")
-	private String name_ru;
+	private String nameRU;
 	
 	@Column(name="_x_totobet_id")
 	private int totoID;
@@ -41,28 +37,28 @@ public class Country implements Serializable{
 		return id;
 	}
 	
-	public void setNameEn(String nameEn){
-		this.nameEn = nameEn;
+	public void setNameEN(String nameEN){
+		this.nameEN = nameEN;
 	}
 	
-	public String getNameEn(){
-		return nameEn;
+	public String getNameEN(){
+		return nameEN;
 	}
 	
-	public void setName_ru(String nameRu){
-		this.name_ru = nameRu;
+	public void setNameRU(String nameRU){
+		this.nameRU = nameRU;
 	}
 	
-	public String getName_ru(){
-		return name_ru;
+	public String getNameRU(){
+		return nameRU;
 	}
 	
-	public void setNameAm(String nameAm){
-		this.nameAm = nameAm;
+	public void setNameAM(String nameAM){
+		this.nameAM = nameAM;
 	}
 	
-	public String getNameAm(){
-		return nameAm;
+	public String getNameAM(){
+		return nameAM;
 	}
 	
 	public void setTotoID(int totoID){

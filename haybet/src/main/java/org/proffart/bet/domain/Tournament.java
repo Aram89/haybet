@@ -21,13 +21,13 @@ public class Tournament implements Serializable {
 	private int id;
 	
 	@Column(name="name_en")
-	private String nameEn; 
+	private String nameEN; 
 	
 	@Column(name="name_am")
-	private String nameAm; 
+	private String nameAM; 
 	
 	@Column(name="name_ru")
-	private String nameRu;
+	private String nameRU;
 	
 	@Column(name="_x_totobet_id")
 	private int totoID;
@@ -46,28 +46,28 @@ public class Tournament implements Serializable {
 		return id;
 	}
 	
-	public void setNameEn(String nameEn){
-		this.nameEn = nameEn;
+	public void setNameEN(String nameEN){
+		this.nameEN = nameEN;
 	}
 	
-	public String getNameEn(){
-		return nameEn;
+	public String getNameEN(){
+		return nameEN;
 	}
 	
-	public void setNameRu(String nameRu){
-		this.nameRu = nameRu;
+	public void setNameRU(String nameRU){
+		this.nameRU = nameRU;
 	}
 	
-	public String getName_ru(){
-		return nameRu;
+	public String getNameRU(){
+		return nameRU;
 	}
 	
-	public void setNameAm(String nameAm){
-		this.nameAm = nameAm;
+	public void setNameAM(String nameAM){
+		this.nameAM = nameAM;
 	}
 	
-	public String getNameAm(){
-		return nameAm;
+	public String getNameAM(){
+		return nameAM;
 	}
 	
 	public void setTotoID(int totoID){
