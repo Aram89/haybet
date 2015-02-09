@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.type.TypeFactory;
 import org.proffart.bet.domain.Country;
-import org.proffart.bet.domain.Test;
+import org.proffart.bet.domain.Events;
 import org.proffart.bet.domain.Tournament;
 import org.proffart.bet.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
