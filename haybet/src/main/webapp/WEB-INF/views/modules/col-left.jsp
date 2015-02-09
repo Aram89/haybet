@@ -4,7 +4,7 @@
 	<div id="col-left-inner" class="col-left-nano-content">
 		<div id="user-left-box"
 			class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">
-			<img alt="" src="img/samples/scarlet-159.png" />
+			<img alt="" src="<c:url value="/resources/img/samples/scarlet-159.png"/>" />
 			<div class="user-box">
 				<span class="name"> 
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Scarlett J. <i class="fa fa-angle-down"></i> </a>
