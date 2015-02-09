@@ -1,6 +1,9 @@
 package org.proffart.bet.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -47,13 +50,9 @@ public class GameService {
 			while (j < tournamnets.size() && id == tournamnets.get(j).getCountryId()){
 				if (tournamnentsByCountry.containsKey(id)){
 					t = tournamnentsByCountry.get(id);
-					t.add(tournamnets.get(j));
-					tournamnentsByCountry.put(countries.get(i), t);
 				}
-				else{					
-					t.add(tournamnets.get(j));
-					tournamnentsByCountry.put(countries.get(i), t);
-				}				
+				t.add(tournamnets.get(j));
+				tournamnentsByCountry.put(countries.get(i), t);
 				++j;
 			}
 			
