@@ -1,12 +1,17 @@
 package org.proffart.bet.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
 import org.proffart.bet.dao.CountryDAO;
+import org.proffart.bet.dao.GameDAO;
 import org.proffart.bet.dao.TournamentDAO;
 import org.proffart.bet.domain.Country;
+import org.proffart.bet.domain.Game;
 import org.proffart.bet.domain.Tournament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +24,18 @@ public class GameService {
 	
 	@Autowired
 	TournamentDAO tDAO;
+	
+	@Autowired
+	GameDAO gDAO;
+	
+	
+	public void addGames(List<Game> games){
+		gDAO.addGames(games);
+	}
+	
+	public List<Game> getGames (int tournamentID){
+		return gDAO.getGames4Tournament(tournamentID);
+	}
 	
 	public void addCountries(List<Country> countries){
 		dao.addCountries(countries);
