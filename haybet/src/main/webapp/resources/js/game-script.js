@@ -67,6 +67,10 @@ $(function($) {
 	}
 	function chnageBet() {
 		var el = $(this);
+		var b = el.closest('.main-box');
+		var result = b.find('.bet-result');
+		var key = b.attr('id');
+		var coefficient = betList[key].betCoefficient;
 		var oldVal = el.data('value');
 		
 		oldVal = parseInt(oldVal);
@@ -80,6 +84,11 @@ $(function($) {
 		}
 		userCurrentBalance = currBalance - newVal;
 		el.data('value', newVal);
+		if(newVal) {
+			result.html(parseInt(coefficient * newVal));
+		} else {
+			result.html('');
+		}
 		el.val(newVal);
 	}
 	function getBetBox(bet) {
@@ -106,7 +115,7 @@ $(function($) {
 		box += '<div class="col-xs-3">';
 		box += bet.betCoefficient;
 		box += '</div>';
-		box += '<div class="col-xs-6">';
+		box += '<div class="col-xs-6 bet-result">';
 		box += '</div>';
 		box += '</div>';
 		
