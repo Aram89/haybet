@@ -30,7 +30,7 @@ public class Game {
 	private String nameRU;
 	
 	@Column(name="date")
-	private Date date;
+	private String date;
 	
 	@Column(name="p1")
 	private double p1;
@@ -78,7 +78,10 @@ public class Game {
 	private double b1;
 	
 	@Column(name="b1_s")
-	private double b1_S;
+	private double b1_s;
+	
+	@Column(name="b2")
+	private double b2;
 	
 	@Column(name="b2_s")
 	private double b2_s;
@@ -152,11 +155,11 @@ public class Game {
 		this.nameRU = nameRU;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -280,12 +283,20 @@ public class Game {
 		this.b1 = b1;
 	}
 
-	public double getB1_S() {
-		return b1_S;
+	public double getB1_s() {
+		return b1_s;
 	}
 
-	public void setB1_S(double b1_S) {
-		this.b1_S = b1_S;
+	public void setB1_S(double b1_s) {
+		this.b1_s = b1_s;
+	}
+	
+	public double getB2() {
+		return b2;
+	}
+
+	public void setB2(double b2) {
+		this.b2 = b2;
 	}
 
 	public double getB2_s() {
@@ -342,5 +353,6 @@ public class Game {
 
 	public void setTournamentTotoID(int tournamentTotoID) {
 		this.tournamentTotoID = tournamentTotoID;
+		this.tournamentID = this.tournamentTotoID;
 	}		
 }
