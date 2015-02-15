@@ -37,7 +37,14 @@
 		<script src="<c:url value="/resources/js/respond.min.js" />"></script>
 	<![endif]-->
 
-
+<style type="text/css">
+#email-navigation {
+	width: 350px;
+}
+#email-content {
+	margin-left: 365px;
+}
+</style>
 </head>
 <body>
 <div id="theme-wrapper">
@@ -136,10 +143,12 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-lg-12">
-										<div id="email-navigation" class="email-nav-nano hidden-xs hidden-sm">
-											<div class="email-nav-nano-content">
-											<%@include file="modules/country-tournament-nav.jsp" %>
+									<div class="col-sm-3">
+										<div id="game-navigation" class="game-nav-nano">
+											<div class="game-nav-nano-content">
+												<%@include file="modules/country-tournament-nav.jsp" %>
+											</div>
+										</div>
 											<!-- <a href="email-compose.html"
 													class="btn btn-success email-compose-btn"> <i
 													class="fa fa-pencil-square-o"></i> Compose email
@@ -194,538 +203,18 @@
 													</ul>
 												</div>
 											-->
+											
+									</div>
+									<div class="col-sm-6">
+										<div id="game-content"  class="game-content-nano">
+											<div class="game-content-nano-content">
 											</div>
 										</div>
-										<div id="email-content" class="email-content-nano">
-											<div class="email-content-nano-content">
-												<ul id="email-list">
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-1" /> <label
-																	for="m-checkbox-1"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Mila Kunis</div>
-														<div class="message">
-															<span class="label label-success">Work</span> <span
-																class="subject">Like your new movie -</span> <span
-																class="body">Hi beauty, I watched your movies
-																last night.</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">9:34 am</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-2" /> <label
-																	for="m-checkbox-2"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Robert Downey Jr.</div>
-														<div class="message">
-															<span class="subject">Happy birthday -</span> <span
-																class="body">I wish you all the best.</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">Sep 14</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-3" /> <label
-																	for="m-checkbox-3"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Ryan Gosling</div>
-														<div class="message">
-															<span class="subject">(no subject) -</span> <span
-																class="body">How you doing? Answer The term 'How
-																are you doing" means...</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 11</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-4"
-																	checked="checked" /> <label for="m-checkbox-4"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a class="starred"></a>
-														</div>
-														<div class="name">Mila Kunis</div>
-														<div class="message">
-															<span class="label label-primary">Important</span> <span
-																class="subject">Like your new movie -</span> <span
-																class="body">Hi beauty, I watched your movies
-																last night and really...</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">9:34 am</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-8" /> <label
-																	for="m-checkbox-8"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Robert Downey Jr.</div>
-														<div class="message">
-															<span class="subject">Happy birthday -</span> <span
-																class="body">I wish you all the best.</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">Sep 14</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-5" /> <label
-																	for="m-checkbox-5"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Emma Watson</div>
-														<div class="message">
-															<span class="label label-danger">Personal</span> <span
-																class="subject">Meet me for coffee -</span> <span
-																class="body">Hi Scarlet, we should meet tomorrow.
-																Emma.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 10</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-6" /> <label
-																	for="m-checkbox-6"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Angelina Jolie</div>
-														<div class="message">
-															<span class="label label-success">Work</span> <span
-																class="subject">Wedding invitation -</span> <span
-																class="body">I would like to invite to our secret
-																wedding with Brad.</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">Sep 08</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-9" /> <label
-																	for="m-checkbox-9"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Ryan Gosling</div>
-														<div class="message">
-															<span class="subject">(no subject) -</span> <span
-																class="body">How you doing? Answer The term 'How
-																are you doing" means...</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 11</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-7" /> <label
-																	for="m-checkbox-7"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Adriana Lima</div>
-														<div class="message">
-															<span class="subject">New Victoria secret
-																collection -</span> <span class="body">Check it out.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 02</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-10"
-																	checked="checked" /> <label for="m-checkbox-10"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a class="starred"></a>
-														</div>
-														<div class="name">Mila Kunis</div>
-														<div class="message">
-															<span class="label label-primary">Important</span> <span
-																class="subject">Like your new movie -</span> <span
-																class="body">Hi beauty, I watched your movies
-																last night and really...</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">9:34 am</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-11" /> <label
-																	for="m-checkbox-11"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a class="starred"></a>
-														</div>
-														<div class="name">Emma Watson</div>
-														<div class="message">
-															<span class="subject">Meet me for coffee -</span> <span
-																class="body">Hi Scarlet, we should meet tomorrow.
-																Emma.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 10</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-14" /> <label
-																	for="m-checkbox-14"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Robert Downey Jr.</div>
-														<div class="message">
-															<span class="subject">Happy birthday -</span> <span
-																class="body">I wish you all the best.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 14</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-13" /> <label
-																	for="m-checkbox-13"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Adriana Lima</div>
-														<div class="message">
-															<span class="subject">New Victoria secret
-																collection -</span> <span class="body">Check it out.</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">Sep 02</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-12" /> <label
-																	for="m-checkbox-12"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Angelina Jolie</div>
-														<div class="message">
-															<span class="label label-primary">Important</span> <span
-																class="subject">Wedding invitation -</span> <span
-																class="body">I would like to invite to our secret
-																wedding with Brad.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 08</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-16"
-																	checked="checked" /> <label for="m-checkbox-16"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a class="starred"></a>
-														</div>
-														<div class="name">Mila Kunis</div>
-														<div class="message">
-															<span class="subject">Like your new movie -</span> <span
-																class="body">Hi beauty, I watched your movies
-																last night and really...</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">9:34 am</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-15" /> <label
-																	for="m-checkbox-15"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Ryan Gosling</div>
-														<div class="message">
-															<span class="subject">(no subject) -</span> <span
-																class="body">How you doing? Answer The term 'How
-																are you doing" means...</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">Sep 11</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-18" /> <label
-																	for="m-checkbox-18"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Angelina Jolie</div>
-														<div class="message">
-															<span class="subject">Wedding invitation -</span> <span
-																class="body">I would like to invite to our secret
-																wedding with Brad.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 08</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-17" /> <label
-																	for="m-checkbox-17"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Emma Watson</div>
-														<div class="message">
-															<span class="subject">Meet me for coffee -</span> <span
-																class="body">Hi Scarlet, we should meet tomorrow.
-																Emma.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 10</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-2" /> <label
-																	for="m-checkbox-2"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Robert Downey Jr.</div>
-														<div class="message">
-															<span class="subject">Happy birthday -</span> <span
-																class="body">I wish you all the best.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 14</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-3" /> <label
-																	for="m-checkbox-3"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Ryan Gosling</div>
-														<div class="message">
-															<span class="subject">(no subject) -</span> <span
-																class="body">How you doing? Answer The term 'How
-																are you doing" means...</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 11</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-16"
-																	checked="checked" /> <label for="m-checkbox-16"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a class="starred"></a>
-														</div>
-														<div class="name">Mila Kunis</div>
-														<div class="message">
-															<span class="subject">Like your new movie -</span> <span
-																class="body">Hi beauty, I watched your movies
-																last night and really...</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">9:34 am</span>
-														</div>
-													</li>
-													<li class="unread clickable-row"
-														data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-14" /> <label
-																	for="m-checkbox-14"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Robert Downey Jr.</div>
-														<div class="message">
-															<span class="subject">Happy birthday -</span> <span
-																class="body">I wish you all the best.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 14</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-13" /> <label
-																	for="m-checkbox-13"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Adriana Lima</div>
-														<div class="message">
-															<span class="subject">New Victoria secret
-																collection -</span> <span class="body">Check it out.</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">Sep 02</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-12" /> <label
-																	for="m-checkbox-12"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Angelina Jolie</div>
-														<div class="message">
-															<span class="label label-primary">Important</span> <span
-																class="subject">Wedding invitation -</span> <span
-																class="body">I would like to invite to our secret
-																wedding with Brad.</span>
-														</div>
-														<div class="meta-info">
-															<span class="date">Sep 08</span>
-														</div>
-													</li>
-													<li class="clickable-row" data-href="email-detail.html">
-														<div class="chbox">
-															<div class="checkbox-nice">
-																<input type="checkbox" id="m-checkbox-17" /> <label
-																	for="m-checkbox-17"></label>
-															</div>
-														</div>
-														<div class="star">
-															<a></a>
-														</div>
-														<div class="name">Emma Watson</div>
-														<div class="message">
-															<span class="subject">Meet me for coffee -</span> <span
-																class="body">Hi Scarlet, we should meet tomorrow.
-																Emma.</span>
-														</div>
-														<div class="meta-info">
-															<a href="#" class="attachment"> <i
-																class="fa fa-paperclip"></i>
-															</a> <span class="date">Sep 10</span>
-														</div>
-													</li>
-												</ul>
+									</div>
+									<div class="col-sm-3">
+										<div id="bet-content"  class="game-content-nano">
+											<div class="game-content-nano-content game-bet-content">
+											
 											</div>
 										</div>
 									</div>
@@ -734,13 +223,12 @@
 						</div>
 					</div>
 					<footer id="footer-bar" class="row hidden-md hidden-lg">
-						<p id="footer-copyright" class="col-xs-12">Powered by Cube
-							Theme.</p>
+						<p id="footer-copyright" class="col-xs-12">Powered by Cube Theme.</p>
 					</footer>
 				</div>
 			</div>
 		</div>
-<%@include file="modules/config-tool.jsp" %>
+<%-- <%@include file="modules/config-tool.jsp" %> --%>
 </div>	
 		
 
@@ -753,6 +241,7 @@
  
 <script src="<c:url value="/resources/js/scripts.js"/>"></script>
 <script src="<c:url value="/resources/js/pace.min.js"/>"></script>
+<script src="<c:url value="/resources/js/game-script.js"/>"></script>
  
 <script>
 	$(document).ready(function() {
@@ -795,28 +284,35 @@
 			var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
 			staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
 	
-			$('#email-content').css('height', windowHeight - staticContentH);
+			$('#game-content').css('height', windowHeight - staticContentH);
 		}
 		else {
-			$('#email-content').css('height', '');
+			$('#game-content').css('height', '');
 		}
 	}
 	
 	function initEmailScroller() {
 		if ($( document ).width() >= 992) {
-			$('#email-navigation').nanoScroller({
+			$('#game-navigation').nanoScroller({
 		    	alwaysVisible: false,
 		    	iOSNativeScrolling: false,
 		    	preventPageScrolling: true,
-		    	contentClass: 'email-nav-nano-content'
+		    	contentClass: 'game-nav-nano-content'
 		    });
 			
-			$('#email-content').nanoScroller({
+			$('#game-content').nanoScroller({
 		    	alwaysVisible: false,
 		    	iOSNativeScrolling: false,
 		    	preventPageScrolling: true,
-		    	contentClass: 'email-content-nano-content'
+		    	contentClass: 'game-content-nano-content'
 		    });
+			
+			/*$('#bet-content').nanoScroller({
+		    	alwaysVisible: false,
+		    	iOSNativeScrolling: false,
+		    	preventPageScrolling: true,
+		    	contentClass: 'game-bet-content'
+		    });*/
 		}
 	}
 	</script>
