@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>ERROR 404 gyada</h2>
+<h2>ERROR 404 gyada, meka Nikona krelu</h2>
+<h2>mek el amen inch vata</h2>
 </body>
 </html>
