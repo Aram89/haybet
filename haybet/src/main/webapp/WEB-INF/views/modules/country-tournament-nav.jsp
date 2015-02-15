@@ -7,7 +7,7 @@
 		<a href="#" class="dropdown-toggle"> <i class="fa fa-angle-right drop-icon"></i> ${entry.key.nameRU}  </a>
 		<ul class="submenu">
 			<c:forEach items="${entry.value}" var="tournament">
-				<li><a href="#" data-tournament-id="${tournament.id}"> ${tournament.nameRU} </a></li>
+				<li><a href="#" data-tournament-id="${tournament.id}" class="tournament"> ${tournament.nameRU} </a></li>
 			</c:forEach>
 		</ul>
 	</li>
