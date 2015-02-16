@@ -34,6 +34,45 @@ $(function($) {
 			data.key = data.gameId + '-' + data.betType;
 			addToBetList(data);
 		});
+		contentElement.find('.show-hide-content').click(function(){
+			var el = $(this);
+			var icon = el.find('i');
+			var mainBox = el.closest('.main-box');
+			var data = mainBox.data();
+			if(parseInt(data.isShow)) {
+				mainBox.data('is-show', 0);
+				icon.addClass('fa-eye-slash');
+				icon.removeClass('fa-eye');
+				mainBox.find('.main-box-body').hide();
+				mainBox.find('.first-or-all-btn').hide();
+			} else {
+				mainBox.data('is-show', 1);
+				icon.addClass('fa-eye');
+				icon.removeClass('fa-eye-slash');
+				mainBox.find('.main-box-body').show();
+				mainBox.find('.first-or-all-btn').show();
+			}
+		});
+		contentElement.find('.first-or-all-btn').click(function(){
+			var el = $(this);
+			var icon = el.find('i');
+			var mainBox = el.closest('.main-box');
+			var data = mainBox.data();
+			//only-first-show
+			if(parseInt(data.onlyFirstShow)) {
+				mainBox.data('only-first-show', 0);
+				icon.addClass('fa-angle-up');
+				icon.removeClass('fa-angle-down');
+				mainBox.find('.other-blocks').show();
+			} else {
+				mainBox.data('only-first-show', 1);
+				icon.addClass('fa-angle-down');
+				icon.removeClass('fa-angle-up');
+				mainBox.find('.other-blocks').hide();
+			}
+		});
+		
+		
 		$('#game-content').nanoScroller({
 	    	alwaysVisible: false,
 	    	iOSNativeScrolling: false,
@@ -167,13 +206,16 @@ $(function($) {
 			return '<button type="button" class="btn btn-primary action" data-bet-title="'+title+'" data-bet-type="'+name+'" data-bet-coefficient="'+coefficient+'" data-bet-coefficient-string="'+coefficientSting+'" style="border-left:1px solid; border-right:1px solid;"><span class="pull-left">'+title+'</span> <span class="pull-right badge">'+coefficient+'</span></button>';
 		};
 		
-		var box = '<div class="main-box clearfix">';
+		var box = '<div class="main-box clearfix" data-is-show="1" data-only-first-show="1">';
 		box += '<header class="main-box-header clearfix" data-id="'+data.id+'" data-name="'+data.nameRU+'">';
 		box += '<h2 class="pull-left">';
 		box += data.nameRU;
 		box += '</h2>';
 		
-		box += '<div class="icon-box pull-right"> <a href="#" class="btn pull-left"> <i class="fa fa-eye"></i> </a> </div>';
+		box += '<div class="icon-box pull-right">';
+		box += '<a href="#" class="btn pull-left first-or-all-btn"><i class="fa fa-angle-down"></i></a>';
+		box += '<a href="#" class="btn pull-left show-hide-content"><i class="fa fa-eye"></i></a>';
+		box += '</div>';
 		box += '</header>';
 		
 		
@@ -181,7 +223,7 @@ $(function($) {
 		box += '<div class="row">';
 		box += '<div class="col-lg-12">';
 		
-
+		box += '<div class="first-block">';
 		if(data['p1'] && data['p2'] && data['x']) {
 			box += '<div class="name"> Исход </div>';
 			box += '<div class="btn-group btn-group-justified">';
@@ -200,7 +242,8 @@ $(function($) {
 			
 			box += '</div>';
 		}
-			
+		box += '</div>';
+		box += '<div class="other-blocks" style="display: none;">';
 		if(data['x1'] && data['x12'] && data['x2']) {
 			box += '<br/><div class="name"> Двойной шанс </div>';
 			box += '<div class="btn-group btn-group-justified">';
@@ -275,7 +318,7 @@ $(function($) {
 			
 			box += '</div>';
 		}
-		
+		box += '</div>';
 
 
 		box += '</div>';
