@@ -1,7 +1,7 @@
 package org.proffart.bet.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +56,7 @@ public class GameService {
 	public Map <Country, ArrayList<Tournament>> getTournamnetsByCounty(){
 		List <Country> countries = getCountriesList();
 		List <Tournament> tournamnets = getTournaments();
-		Map <Country, ArrayList<Tournament>> tournamnentsByCountry = new HashMap<Country, ArrayList<Tournament>>();
+		Map <Country, ArrayList<Tournament>> tournamnentsByCountry = new LinkedHashMap<Country, ArrayList<Tournament>>();
 		int j = 0;		
 		for (int i = 0; i< countries.size(); ++i){
 			ArrayList<Tournament> t = new ArrayList<Tournament>();
