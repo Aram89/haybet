@@ -10,6 +10,7 @@ $(function($) {
 		if(curenntTournamentID != tournamentID) {
 			console.log(tournamentID);
 			curenntTournamentID = tournamentID;
+			contentElement.html('<p style="font-size: 300%; text-align: center;"><a><i class="fa fa-spinner fa-spin"></i></a></p>');
 			$.ajax({
 				  url: "?tournamentID="+tournamentID,
 				  type: "GET",
@@ -90,7 +91,7 @@ $(function($) {
 			box.fadeIn('fast');
 			box.find('.rem-box').click(function(){
 				var b = $(this).closest('.main-box');
-				var val = b.find('.bet').data('value');
+				var val = b.find('.bet-count').data('value');
 				var key = b.attr('id'); 
 				val = parseInt(val);
 				delete betList[key];
@@ -100,8 +101,45 @@ $(function($) {
 					b.remove();
 				});
 			});
-			box.find('.bet').change(chnageBet);
-			box.find('.bet').keyup(chnageBet);
+			box.find('.bet-count').change(chnageBet);
+			box.find('.bet-count').keyup(chnageBet);
+			box.find('.bet').click(bet);
+		}
+	}
+	function bet() {
+		var el = $(this);
+		if(el.data('wait')) return;
+		var b = el.closest('.main-box');
+		var result = b.find('.bet-result');
+		var key = b.attr('id');
+		var coefficient = betList[key].betCoefficient;
+		var betCount = parseInt(b.find('.bet-count').val());
+		if(!isNaN(betCount) && betCount) {
+			var data = {
+				count:betCount,
+				games:[{
+					gameId:betList[key].gameId,
+					type:betList[key].betType
+				}]
+			};
+			el.data('wait', true);
+			b.find('.bet-count').attr('readonly', true);
+			b.find('.rem-box').fadeOut('fast');
+			el.html('<i class="fa fa-refresh fa-spin"></i> Wait ');
+			$.ajax({
+			  url: "?action=bet",
+			  type: "POST",
+			  dataType: "json",
+			  success : function(resData){
+				  b.find('.main-box-body').html(resData.infoText);
+				  setTimeout(function(){
+					  b.slideUp( 400, function(){
+						  b.remove();  
+					  });
+				  }, 15000);
+			  }
+			});
+			
 		}
 	}
 	function chnageBet() {
@@ -160,10 +198,10 @@ $(function($) {
 		
 		box += '<div class="row">';
 		box += '<div class="col-xs-9">';
-		box += '<input type="number" class="form-control bet" data-value="0" value=""></td>';
+		box += '<input type="number" class="form-control bet-count" data-value="0" value=""></td>';
 		box += '</div>';
 		box += '<div class="col-xs-3">';
-		box += '<button type="button" class="btn btn-default btn-block"><i class="fa fa-trash-o"></i></button>';
+		box += '<button type="button" class="btn btn-default btn-block bet"><i class="fa fa-check"></i> Bet </button>';
 		box += '</div>';
 		box += '</div>';
 		
