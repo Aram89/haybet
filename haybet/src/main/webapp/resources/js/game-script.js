@@ -10,6 +10,7 @@ $(function($) {
 		if(curenntTournamentID != tournamentID) {
 			console.log(tournamentID);
 			curenntTournamentID = tournamentID;
+			contentElement.html('<p style="font-size: 300%; text-align: center;"><a><i class="fa fa-spinner fa-spin"></i></a></p>');
 			$.ajax({
 				  url: "?tournamentID="+tournamentID,
 				  type: "GET",
@@ -90,7 +91,7 @@ $(function($) {
 			box.fadeIn('fast');
 			box.find('.rem-box').click(function(){
 				var b = $(this).closest('.main-box');
-				var val = b.find('.bet').data('value');
+				var val = b.find('.bet-count').data('value');
 				var key = b.attr('id'); 
 				val = parseInt(val);
 				delete betList[key];
@@ -101,20 +102,19 @@ $(function($) {
 				});
 			});
 			box.find('.bet-count').change(chnageBet);
-			box.find('.bet-count').keypres(chnageBet);
-			box.find('.bet').keypres(bet);
+			box.find('.bet-count').keyup(chnageBet);
+			box.find('.bet').click(bet);
 		}
 	}
 	function bet() {
 		var el = $(this);
 		if(el.data('wait')) return;
-		el.data('wait', true);
 		var b = el.closest('.main-box');
 		var result = b.find('.bet-result');
 		var key = b.attr('id');
 		var coefficient = betList[key].betCoefficient;
 		var betCount = parseInt(b.find('.bet-count').val());
-		if(isNaN(betCount) && betCount) {
+		if(!isNaN(betCount) && betCount) {
 			var data = {
 				count:betCount,
 				games:[{
@@ -122,9 +122,10 @@ $(function($) {
 					type:betList[key].betType
 				}]
 			};
+			el.data('wait', true);
 			b.find('.bet-count').attr('readonly', true);
 			b.find('.rem-box').fadeOut('fast');
-			el.html('<i class="fa fa-spinner fa-pulse"></i> Wait ');
+			el.html('<i class="fa fa-refresh fa-spin"></i> Wait ');
 			$.ajax({
 			  url: "?action=bet",
 			  type: "POST",
