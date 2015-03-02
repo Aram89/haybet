@@ -100,8 +100,45 @@ $(function($) {
 					b.remove();
 				});
 			});
-			box.find('.bet').change(chnageBet);
-			box.find('.bet').keyup(chnageBet);
+			box.find('.bet-count').change(chnageBet);
+			box.find('.bet-count').keypres(chnageBet);
+			box.find('.bet').keypres(bet);
+		}
+	}
+	function bet() {
+		var el = $(this);
+		if(el.data('wait')) return;
+		el.data('wait', true);
+		var b = el.closest('.main-box');
+		var result = b.find('.bet-result');
+		var key = b.attr('id');
+		var coefficient = betList[key].betCoefficient;
+		var betCount = parseInt(b.find('.bet-count').val());
+		if(isNaN(betCount) && betCount) {
+			var data = {
+				count:betCount,
+				games:[{
+					gameId:betList[key].gameId,
+					type:betList[key].betType
+				}]
+			};
+			b.find('.bet-count').attr('readonly', true);
+			b.find('.rem-box').fadeOut('fast');
+			el.html('<i class="fa fa-spinner fa-pulse"></i> Wait ');
+			$.ajax({
+			  url: "?action=bet",
+			  type: "POST",
+			  dataType: "json",
+			  success : function(resData){
+				  b.find('.main-box-body').html(resData.infoText);
+				  setTimeout(function(){
+					  b.slideUp( 400, function(){
+						  b.remove();  
+					  });
+				  }, 15000);
+			  }
+			});
+			
 		}
 	}
 	function chnageBet() {
@@ -160,10 +197,10 @@ $(function($) {
 		
 		box += '<div class="row">';
 		box += '<div class="col-xs-9">';
-		box += '<input type="number" class="form-control bet" data-value="0" value=""></td>';
+		box += '<input type="number" class="form-control bet-count" data-value="0" value=""></td>';
 		box += '</div>';
 		box += '<div class="col-xs-3">';
-		box += '<button type="button" class="btn btn-default btn-block"><i class="fa fa-trash-o"></i></button>';
+		box += '<button type="button" class="btn btn-default btn-block bet"><i class="fa fa-check"></i> Bet </button>';
 		box += '</div>';
 		box += '</div>';
 		
