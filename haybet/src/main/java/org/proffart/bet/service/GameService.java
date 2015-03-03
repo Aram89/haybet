@@ -73,4 +73,17 @@ public class GameService {
 		}
 		return tournamnentsByCountry;		
 	}
+	
+	public List<Game> check4NewGames(List<Game> fromJSON, int minID, int maxID){
+		List <Game> fromDB = gDAO.getGames(minID, maxID);
+		List<Game> newGames = new ArrayList<Game>();
+		for (Game g : fromJSON){
+			if (fromDB.contains(g)){
+				//fromJSON.remove(g);
+				newGames.add(g);
+			}
+		}
+		return newGames;
+		
+	}
 }

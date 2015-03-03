@@ -3,10 +3,7 @@ package org.proffart.bet.dao;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.SessionFactory;
 import org.proffart.bet.domain.Country;
-import org.proffart.bet.domain.Tournament;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository 

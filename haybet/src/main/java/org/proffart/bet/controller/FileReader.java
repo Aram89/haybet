@@ -22,7 +22,7 @@ public class FileReader {
 			String everything = sb.toString();
 			return everything;
 		} finally {
-		//	br.close();
+		   br.close();
 		}
 	}
 

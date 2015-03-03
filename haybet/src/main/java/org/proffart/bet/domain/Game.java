@@ -1,10 +1,7 @@
 package org.proffart.bet.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,7 +10,6 @@ import javax.persistence.Table;
 public class Game {
 	
 	@Id
-	@GeneratedValue
 	@Column(name="id")
 	private int id;
 	
@@ -114,7 +110,7 @@ public class Game {
 	public void setHash(String hash) {
 		this.hash = hash;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -345,6 +341,7 @@ public class Game {
 
 	public void setTotoID(int totoID) {
 		this.totoID = totoID;
+		this.id = this.totoID;
 	}
 
 	public int getTournamentTotoID() {
@@ -354,5 +351,22 @@ public class Game {
 	public void setTournamentTotoID(int tournamentTotoID) {
 		this.tournamentTotoID = tournamentTotoID;
 		this.tournamentID = this.tournamentTotoID;
-	}		
+	}	
+	
+	@Override
+	public int hashCode(){
+		return id;		
+	}
+	
+	@Override
+	public boolean equals (Object obj){
+		if(!(obj instanceof Game))
+			return false;
+		if (obj == this)
+			return true;
+		Game rhs = (Game) obj;
+		if (this.id == rhs.id && this.hash.equals(rhs.hash))
+			return true;
+		return false;		
+	}
 }

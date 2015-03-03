@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 public class GameDAOImpl extends AbstractDAO implements GameDAO {
 
 	public void addGame(Game game) {
-		persist(game);
+		//persist(game);
+		getSession().saveOrUpdate(game);
+		
 		
 	}
 
@@ -24,6 +26,16 @@ public class GameDAOImpl extends AbstractDAO implements GameDAO {
 		String hql = "FROM org.proffart.bet.domain.Game g where g.tournamentTotoID = :id ";
 		Query query = getSession().createQuery(hql);
 		query.setParameter("id",tournamentID);
+		@SuppressWarnings("unchecked")
+		List<Game> results = query.list();
+		return results;		
+	}
+
+	public List<Game> getGames(Integer minID, Integer maxID) {
+		String hql = "FROM org.proffart.bet.domain.Game g where g.id > :minID AND g.id < :maxID";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("minID",minID);
+		query.setParameter("maxID",maxID);
 		@SuppressWarnings("unchecked")
 		List<Game> results = query.list();
 		return results;		
