@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="country")
+@Table(name="bet_group")
 public class BetGroup implements Serializable{
 	
 	@Id
