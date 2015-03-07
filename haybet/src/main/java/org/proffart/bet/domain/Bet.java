@@ -19,7 +19,7 @@ public class Bet implements Serializable{
 	@Column(name="game_id")
 	private int gameID;
 	@Column(name="bet_type")
-	private String bet_type;
+	private String betType;
 	@Column(name="is_finished")
 	private int is_finished;
 	@Column(name="status")
@@ -43,11 +43,11 @@ public class Bet implements Serializable{
 	public void setGameID(int gameID) {
 		this.gameID = gameID;
 	}
-	public String getBet_type() {
-		return bet_type;
+	public String getBetType() {
+		return betType;
 	}
-	public void setBet_type(String bet_type) {
-		this.bet_type = bet_type;
+	public void setBetType(String betType) {
+		this.betType = betType;
 	}
 	public int getIs_finished() {
 		return is_finished;
