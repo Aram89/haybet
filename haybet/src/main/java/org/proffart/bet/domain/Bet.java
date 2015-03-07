@@ -21,7 +21,7 @@ public class Bet implements Serializable{
 	@Column(name="bet_type")
 	private String betType;
 	@Column(name="is_finished")
-	private int is_finished;
+	private boolean isFinished;
 	@Column(name="status")
 	private String status;
 	
@@ -49,11 +49,11 @@ public class Bet implements Serializable{
 	public void setBetType(String betType) {
 		this.betType = betType;
 	}
-	public int getIs_finished() {
-		return is_finished;
+	public boolean getIsFinished() {
+		return isFinished;
 	}
-	public void setIs_finished(int is_finished) {
-		this.is_finished = is_finished;
+	public void setIs_finished(boolean isFinished) {
+		this.isFinished = isFinished;
 	}
 	public String getStatus() {
 		return status;
