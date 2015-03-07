@@ -14,81 +14,53 @@ public class Bet implements Serializable{
 	@Id
 	@Column(name="id")
 	private int ID;
-	
-	@Column(name="user_id")
-	private int userID;
-	
-	@Column(name="betGroupID")
-	private int betGroupID;
-	
-	@Column(name="type")
-	private String type;
-	
-	@Column(name="type_s")
-	private String typeS;
-	
-	@Column(name="coefficient")
-	private double coefficient;
-
-	@Column(name="is_done")
-	private Boolean isDone;
+	@Column(name="bet_group_id")
+	private double betGroupID;
+	@Column(name="game_id")
+	private int gameID;
+	@Column(name="bet_type")
+	private String bet_type;
+	@Column(name="is_finished")
+	private int is_finished;
+	@Column(name="status")
+	private String status;
 	
 	public int getID() {
 		return ID;
 	}
-
 	public void setID(int iD) {
 		ID = iD;
 	}
-
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-	public int getBetGroupID() {
+	public double getBetGroupID() {
 		return betGroupID;
 	}
-
-	public void setBetGroupID(int betGroupID) {
+	public void setBetGroupID(double betGroupID) {
 		this.betGroupID = betGroupID;
 	}
-
-	public String getType() {
-		return type;
+	public int getGameID() {
+		return gameID;
 	}
-
-	public void setType(String type) {
-		this.type = type;
+	public void setGameID(int gameID) {
+		this.gameID = gameID;
 	}
-
-	public String getTypeS() {
-		return typeS;
+	public String getBet_type() {
+		return bet_type;
 	}
-
-	public void setTypeS(String typeS) {
-		this.typeS = typeS;
+	public void setBet_type(String bet_type) {
+		this.bet_type = bet_type;
 	}
-
-	public double getCoefficient() {
-		return coefficient;
+	public int getIs_finished() {
+		return is_finished;
 	}
-
-	public void setCoefficient(double coefficient) {
-		this.coefficient = coefficient;
+	public void setIs_finished(int is_finished) {
+		this.is_finished = is_finished;
 	}
-
-	public Boolean getIsDone() {
-		return isDone;
+	public String getStatus() {
+		return status;
 	}
-
-	public void setIsDone(Boolean isDone) {
-		this.isDone = isDone;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-
-
+	
 
 }
