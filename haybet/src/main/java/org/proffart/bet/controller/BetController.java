@@ -6,7 +6,7 @@ import java.util.List;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.proffart.bet.domain.Bet;
+import org.proffart.bet.domain.BetTmpStructure;
 import org.proffart.bet.domain.Events;
 import org.proffart.bet.domain.Game;
 import org.proffart.bet.service.GameService;
@@ -47,9 +47,9 @@ public class BetController {
 	}
 	
 	@RequestMapping(value="games/bet",params = {"data"}, method = RequestMethod.POST)
-	public @ResponseBody Bet doBet(@RequestParam(value = "jsondata") String data,ModelMap model) throws
+	public @ResponseBody BetTmpStructure doBet(@RequestParam(value = "data") String data, ModelMap model) throws
 	JsonParseException, JsonMappingException, IOException{
-		Bet betJSON = new ObjectMapper().readValue(data, Bet.class);
-		return betJSON;		
+		BetTmpStructure betJSON = new ObjectMapper().readValue(data, BetTmpStructure.class);
+		return betJSON;
 	}	
 }
