@@ -116,10 +116,10 @@ $(function($) {
 		var betCount = parseInt(b.find('.bet-count').val());
 		if(!isNaN(betCount) && betCount) {
 			var data = {
-				count:betCount,
+				amount:betCount,
 				games:[{
 					gameId:betList[key].gameId,
-					type:betList[key].betType
+					betType:betList[key].betType
 				}]
 			};
 			el.data('wait', true);
@@ -127,9 +127,10 @@ $(function($) {
 			b.find('.rem-box').fadeOut('fast');
 			el.html('<i class="fa fa-refresh fa-spin"></i> Wait ');
 			$.ajax({
-			  url: "?action=bet",
+			  url: "/bet",
 			  type: "POST",
 			  dataType: "json",
+			  data : {data : JSON.stringify(data)},
 			  success : function(resData){
 				  b.find('.main-box-body').html(resData.infoText);
 				  setTimeout(function(){
