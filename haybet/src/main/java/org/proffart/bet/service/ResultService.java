@@ -1,13 +1,15 @@
 package org.proffart.bet.service;
 
 import org.proffart.bet.domain.Betting;
+import org.proffart.bet.domain.Result;
 
 public class ResultService {
 
-	public Betting parseResult(String result){
+	public Betting parseResult(Result result){
 		Betting bet = new Betting();
+		String score = result.getScore();
 		try{
-			String[] scores = result.split(":");
+			String[] scores = score.split(":");
 			Integer team1Score = Integer.parseInt(scores[0]);
 			Integer team2Score = Integer.parseInt(scores[1]);
 			if (team1Score > team2Score)

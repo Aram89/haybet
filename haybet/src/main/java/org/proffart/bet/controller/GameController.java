@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class GameController {
 	@Autowired
-	GameService service;
-	
-	
+	GameService service;	
 	
 	@RequestMapping(value="aaa", method = RequestMethod.GET)
 	public String showBets(ModelMap model, HttpSession session){
