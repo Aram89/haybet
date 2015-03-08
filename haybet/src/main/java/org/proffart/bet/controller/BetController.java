@@ -48,7 +48,7 @@ public class BetController {
 	
 	@RequestMapping(value="games/bet",params = {"data"}, method = RequestMethod.POST)
 	public @ResponseBody BetTmpStructure doBet(@RequestParam(value = "data") String data, ModelMap model) throws
-	JsonParseException, JsonMappingException, IOException{
+	JsonParseException, JsonMappingException, IOException {
 		BetTmpStructure betJSON = new ObjectMapper().readValue(data, BetTmpStructure.class);
 		return betJSON;
 	}	
