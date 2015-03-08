@@ -52,7 +52,7 @@ public class Bet implements Serializable{
 	public boolean getIsFinished() {
 		return isFinished;
 	}
-	public void setIs_finished(boolean isFinished) {
+	public void setIsFinished(boolean isFinished) {
 		this.isFinished = isFinished;
 	}
 	public String getStatus() {
