@@ -11,15 +11,14 @@ public class ReflectUtils {
 	 * @param obj
 	 * @return
 	 */
-	public static boolean callGetter(String fieldName, Object obj){
+	public static Object callGetter(String fieldName, Object obj){
 		try{
 			Method method = obj.getClass().getMethod("get" + StringUtils.toUpperCase(fieldName));               
-			method.invoke(obj);
-			return true;
+			return method.invoke(obj);
 		}
 		catch (Exception e){
-			return false;
-		}		
+			return new Object();
+		}
 	}
 	
 	/**
