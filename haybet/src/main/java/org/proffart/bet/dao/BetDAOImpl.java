@@ -2,7 +2,9 @@ package org.proffart.bet.dao;
 
 import org.proffart.bet.domain.Bet;
 import org.proffart.bet.domain.BetGroup;
+import org.springframework.stereotype.Repository;
 
+@Repository 
 public class BetDAOImpl extends AbstractDAO implements BetDAO {
 
 	public void setStatus() {
