@@ -127,7 +127,7 @@ $(function($) {
 			b.find('.rem-box').fadeOut('fast');
 			el.html('<i class="fa fa-refresh fa-spin"></i> Wait ');
 			$.ajax({
-			  url: "/bet",
+			  url: window.location.pathname + '/bet',
 			  type: "POST",
 			  dataType: "json",
 			  data : {data : JSON.stringify(data)},
@@ -226,14 +226,31 @@ $(function($) {
 	
 	
 	function generateBox(data) {
+		var key, key2;
 		var name2Title = {
-			'p1' : 'П1',        'p2' : 'П2',
-			'x'  : 'X',         'x1' : '1X',
-			'x12': '12',        'x2' : 'X2',
-			'f1' : 'Ф1',        'f2' : 'Ф2',
-			'b'  : 'Б',         'm'  : 'М',
-			'b1' : 'Б',         'm1' : 'М',
-			'b2' : 'Б',         'm2' : 'М'
+			
+		't_p1' : 'П1',         't_t1_s_yes' : 'да',
+		't_p2' : 'П2',         't_t1_s_no'  : 'нет',
+		't_x'  : 'X',          't_t2_s_yes' : 'да',
+		't_1x' : '1X',         't_t2_s_no'  : 'нет',
+		't_12' : '12',         't_s_yes'    : 'да',
+		't_x2' : 'X2',         't_s_no'     : 'нет',
+
+		't_b_05' : 'Б',    't_b1_05' : 'Б',    't_b2_05' : 'Б',
+		't_b_15' : 'Б',    't_b1_15' : 'Б',    't_b2_15' : 'Б',
+		't_b_25' : 'Б',    't_b1_25' : 'Б',    't_b2_25' : 'Б',
+		't_b_35' : 'Б',    't_b1_35' : 'Б',    't_b2_35' : 'Б',
+		't_b_45' : 'Б',    't_b1_45' : 'Б',    't_b2_45' : 'Б',
+		't_b_55' : 'Б',    't_b1_55' : 'Б',    't_b2_55' : 'Б',
+
+		't_m_05' : 'М',     't_m1_05' : 'М',    't_m2_05' : 'М',
+		't_m_15' : 'М',     't_m1_15' : 'М',    't_m2_15' : 'М',
+		't_m_25' : 'М',     't_m1_25' : 'М',    't_m2_25' : 'М',
+		't_m_35' : 'М',     't_m1_35' : 'М',    't_m2_35' : 'М',
+		't_m_45' : 'М',     't_m1_45' : 'М',    't_m2_45' : 'М',
+		't_m_55' : 'М',     't_m1_55' : 'М',    't_m2_55' : 'М'
+		
+		
 		};
 		var getRowBtn = function(name, coefficient, coefficientSting) {
 			coefficientSting = coefficientSting || '';
@@ -244,7 +261,19 @@ $(function($) {
 			}
 			return '<button type="button" class="btn btn-primary action" data-bet-title="'+title+'" data-bet-type="'+name+'" data-bet-coefficient="'+coefficient+'" data-bet-coefficient-string="'+coefficientSting+'" style="border-left:1px solid; border-right:1px solid;"><span class="pull-left">'+title+'</span> <span class="pull-right badge">'+coefficient+'</span></button>';
 		};
-		
+		var toCoefficientSting = function(str) {
+			var ret = null;
+			switch(str.substr(-2)) {
+				case '05' : ret = 0.5; break;
+				case '15' : ret = 1.5; break;
+				case '25' : ret = 2.5; break;
+				case '35' : ret = 3.5; break;
+				case '45' : ret = 4.5; break;
+				case '55' : ret = 5.5; break;
+			}
+			return ret;
+		}
+		var subBox = '';
 		var box = '<div class="main-box clearfix" data-is-show="1" data-only-first-show="1">';
 		box += '<header class="main-box-header clearfix" data-id="'+data.id+'" data-name="'+data.nameRU+'">';
 		box += '<h2 class="pull-left">';
@@ -263,100 +292,113 @@ $(function($) {
 		box += '<div class="col-lg-12">';
 		
 		box += '<div class="first-block">';
-		if(data['p1'] && data['p2'] && data['x']) {
+		
+		if(data['t_p1'] && data['t_p2'] && data['t_x']) {
 			box += '<div class="name"> Исход </div>';
 			box += '<div class="btn-group btn-group-justified">';
 			
 			box += '<div class="btn-group">';
-			box += getRowBtn('p1', data['p1']);
+			box += getRowBtn('t_p1', data['t_p1']);
 			box += '</div>';
 			
 			box += '<div class="btn-group">';
-			box += getRowBtn('x', data['x']);
+			box += getRowBtn('t_x', data['t_x']);
 			box += '</div>';
 			
 			box += '<div class="btn-group">';
-			box += getRowBtn('p2', data['p2']);
+			box += getRowBtn('t_p2', data['t_p2']);
 			box += '</div>';
 			
 			box += '</div>';
 		}
 		box += '</div>';
 		box += '<div class="other-blocks" style="display: none;">';
-		if(data['x1'] && data['x12'] && data['x2']) {
+	
+		
+		if(data['t_1x'] && data['t_12'] && data['t_x2']) {
 			box += '<br/><div class="name"> Двойной шанс </div>';
 			box += '<div class="btn-group btn-group-justified">';
 			
 			box += '<div class="btn-group">';
-			box += getRowBtn('x1', data['x1']);
+			box += getRowBtn('t_1x', data['t_1x']);
 			box += '</div>';
 			
 			box += '<div class="btn-group">';
-			box += getRowBtn('x12', data['x12']);
+			box += getRowBtn('t_12', data['t_12']);
 			box += '</div>';
 			
 			box += '<div class="btn-group">';
-			box += getRowBtn('x2', data['x2']);
+			box += getRowBtn('t_x2', data['t_x2']);
 			box += '</div>';
 			
 			box += '</div>';
 		}
-		if(data['f1'] && data['f1']) {
-			box += '<br/><div class="name"> Фора </div>';
-			box += '<div class="btn-group btn-group-justified">';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('f1', data['f1'], data['f1_s']);
-			box += '</div>';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('f2', data['f2'], data['f2_s']);
-			box += '</div>';
-			
-			box += '</div>';
+		subBox = '';
+		for(key in data) {
+			if(key.indexOf('t_b_') == 0) {
+				key2 = 't_m_' + key.substr(-2);
+				if(data[key] && data[key2]) {
+					subBox += '<div class="btn-group btn-group-justified">';
+					subBox += '<div class="btn-group">';
+					subBox += getRowBtn(key, data[key], toCoefficientSting(key));
+					subBox += '</div>';
+					
+					subBox += '<div class="btn-group">';
+					subBox += getRowBtn(key2, data[key2], toCoefficientSting(key2));
+					subBox += '</div>';
+					subBox += '</div>';
+					
+				}
+			}
 		}
-		if(data['b'] && data['m']) {
+		if(subBox) {
 			box += '<br/><div class="name"> Тотал </div>';
-			box += '<div class="btn-group btn-group-justified">';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('b', data['b'], data['b_s']);
-			box += '</div>';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('m', data['m'], data['m_s']);
-			box += '</div>';
-			
-			box += '</div>';
+			box += subBox;
 		}
-		if(data['b1'] && data['m1']) {
+		subBox = '';
+		for(key in data) {
+			if(key.indexOf('t_b1_') == 0) {
+				key2 = 't_m1_' + key.substr(-2);
+				if(data[key] && data[key2]) {
+					subBox += '<div class="btn-group btn-group-justified">';
+					subBox += '<div class="btn-group">';
+					subBox += getRowBtn(key, data[key], toCoefficientSting(key));
+					subBox += '</div>';
+					
+					subBox += '<div class="btn-group">';
+					subBox += getRowBtn(key2, data[key2], toCoefficientSting(key2));
+					subBox += '</div>';
+					subBox += '</div>';
+				}
+			}
+		}
+		if(subBox) {
 			box += '<br/><div class="name"> Тотал ком.1 </div>';
-			box += '<div class="btn-group btn-group-justified">';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('b1', data['b1'], data['b1_s']);
-			box += '</div>';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('m1', data['m1'], data['m1_s']);
-			box += '</div>';
-			
-			box += '</div>';
+			box += subBox;
 		}
-		if(data['b2'] && data['m2']) {
+		subBox = '';
+		for(key in data) {
+			if(key.indexOf('t_b2_') == 0) {
+				key2 = 't_m2_' + key.substr(-2);
+				if(data[key] && data[key2]) {
+					subBox += '<div class="btn-group btn-group-justified">';
+					subBox += '<div class="btn-group">';
+					subBox += getRowBtn(key, data[key], toCoefficientSting(key));
+					subBox += '</div>';
+					
+					subBox += '<div class="btn-group">';
+					subBox += getRowBtn(key2, data[key2], toCoefficientSting(key2));
+					subBox += '</div>';
+					subBox += '</div>';
+				}
+			}
+		}
+		if(subBox) {
 			box += '<br/><div class="name"> Тотал ком.2 </div>';
-			box += '<div class="btn-group btn-group-justified">';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('b2', data['b2'], data['b2_s']);
-			box += '</div>';
-			
-			box += '<div class="btn-group">';
-			box += getRowBtn('m2', data['m2'], data['m2_s']);
-			box += '</div>';
-			
-			box += '</div>';
+			box += subBox;
 		}
+		subBox = '';
+		
 		box += '</div>';
 
 
