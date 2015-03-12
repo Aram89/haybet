@@ -22,8 +22,12 @@ public class BetTmpStructure
 	public void setGamesTmpStructure(List<GameTmpStructure> gamesTmpStructure) {
 		this.gamesTmpStructure = gamesTmpStructure;
 	}
+	
+	public int getBetsCount() {
+		return gamesTmpStructure.size(); 
+	}
 
-	static class GameTmpStructure {
+	public static class GameTmpStructure {
 		private int gameId;
 		private String betType;
 		public int getGameId() {
