@@ -2,13 +2,18 @@ package org.proffart.bet.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.proffart.bet.dao.BetDAO;
 import org.proffart.bet.dao.GameDAO;
 import org.proffart.bet.domain.BetTmpStructure;
 import org.proffart.bet.domain.Game;
 import org.proffart.bet.utils.ReflectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Transactional
+@Service
 public class BetService {
 	@Autowired
 	BetDAO dao;
