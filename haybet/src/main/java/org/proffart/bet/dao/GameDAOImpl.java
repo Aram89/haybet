@@ -19,7 +19,10 @@ public class GameDAOImpl extends AbstractDAO implements GameDAO {
 	public void addGames(List<Game> games) {
 		for(Game game : games){
 			addGame(game);
-		}		
+		}
+	}
+	public Game getGameByID(int gameID) {
+		return (Game) getSession().get(Game.class, gameID);
 	}
 
 	public List<Game> getGames4Tournament(int tournamentID) {
