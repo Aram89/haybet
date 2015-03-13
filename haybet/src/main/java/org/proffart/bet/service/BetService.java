@@ -22,7 +22,7 @@ public class BetService {
 	GameDAO gDAO;
 
 	
-	public boolean valid(BetTmpStructure betTmpStructure) {
+	public boolean isValid(BetTmpStructure betTmpStructure) {
 		//TODO implement valid method
 		return true;
 	}
@@ -36,7 +36,7 @@ public class BetService {
 		}
 	}
 	
-	protected double collectCoefficient(List<BetTmpStructure.GameTmpStructure> gameTmpStructures) {
+	private static double collectCoefficient(List<BetTmpStructure.GameTmpStructure> gameTmpStructures) {
 		double coefficient = 1;
 		for(BetTmpStructure.GameTmpStructure gameTmpStructure : gameTmpStructures ) {
 			Game game = gDAO.getGameByID(gameTmpStructure.getGameId());
