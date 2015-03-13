@@ -17,7 +17,7 @@ public class ReflectUtils {
 			return method.invoke(obj);
 		}
 		catch (Exception e){
-			return new Object();
+			return null;
 		}
 	}
 	
