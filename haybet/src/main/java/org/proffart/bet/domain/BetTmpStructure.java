@@ -5,7 +5,7 @@ import java.util.List;
 public class BetTmpStructure
 {
 	private double amount;
-	private List<GameTmpStructure> gamesTmpStructure;
+	private List<GameTmpStructure> games;
 	
 	public double getAmount() {
 		return amount;
@@ -15,16 +15,16 @@ public class BetTmpStructure
 		this.amount = amount;
 	}
 
-	public List<GameTmpStructure> getGamesTmpStructure() {
-		return gamesTmpStructure;
+	public List<GameTmpStructure> getGames() {
+		return games;
 	}
 
-	public void setGamesTmpStructure(List<GameTmpStructure> gamesTmpStructure) {
-		this.gamesTmpStructure = gamesTmpStructure;
+	public void setGames(List<GameTmpStructure> games) {
+		this.games = games;
 	}
 	
 	public int getBetsCount() {
-		return gamesTmpStructure.size(); 
+		return games.size(); 
 	}
 
 	public static class GameTmpStructure {
