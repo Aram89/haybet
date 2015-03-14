@@ -1,3 +1,14 @@
+CREATE TABLE `users` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nick_name` char(50) DEFAULT NOT NULL,
+  `email` char(150) DEFAULT NOT NULL,
+  `password` char(255) DEFAULT NOT NULL,
+  `balance` decimal(20) DEFAULT '0',
+  `role`  ENUM('ADMIN', 'USER') NOT NULL DEFAULT 'USER',
+  `enabled` tinyint(1) DEFAULT '0', 
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `country` (
   `id` int(11) UNSIGNED NOT NULL,
   `name_en` char(255) DEFAULT NULL,
