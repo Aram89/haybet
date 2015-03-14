@@ -8,7 +8,7 @@ $(function($) {
 	$('.tournament').click(function(){
 		var tournamentID = parseInt( $(this).data('tournament-id'));
 		if(curenntTournamentID != tournamentID) {
-			console.log(tournamentID);
+			//console.log(tournamentID);
 			curenntTournamentID = tournamentID;
 			contentElement.html('<p style="font-size: 300%; text-align: center;"><a><i class="fa fa-spinner fa-spin"></i></a></p>');
 			$.ajax({
@@ -132,7 +132,9 @@ $(function($) {
 			  dataType: "json",
 			  data : {data : JSON.stringify(data)},
 			  success : function(resData){
-				  b.find('.main-box-body').html(resData.infoText);
+				  //TODO
+				  b.find('.main-box-body').html('OK');
+				  //b.find('.main-box-body').html(resData.infoText);
 				  setTimeout(function(){
 					  b.slideUp( 400, function(){
 						  b.remove();  
