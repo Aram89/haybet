@@ -36,7 +36,7 @@ public class BetService {
 		}
 	}
 	
-	private static double collectCoefficient(List<BetTmpStructure.GameTmpStructure> gameTmpStructures) {
+	private double collectCoefficient(List<BetTmpStructure.GameTmpStructure> gameTmpStructures) {
 		double coefficient = 1;
 		for(BetTmpStructure.GameTmpStructure gameTmpStructure : gameTmpStructures ) {
 			Game game = gDAO.getGameByID(gameTmpStructure.getGameId());
