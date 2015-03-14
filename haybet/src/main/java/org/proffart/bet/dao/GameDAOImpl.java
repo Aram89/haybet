@@ -22,6 +22,10 @@ public class GameDAOImpl extends AbstractDAO implements GameDAO {
 		}		
 	}
 
+	public Game getGameByID(int gameID) {
+		return (Game) getSession().get(Game.class, gameID);
+ 	}
+
 	public List<Game> getGames4Tournament(int tournamentID) {
 		String hql = "FROM org.proffart.bet.domain.Game g where g.tournamentTotoID = :id ";
 		Query query = getSession().createQuery(hql);
@@ -41,7 +45,6 @@ public class GameDAOImpl extends AbstractDAO implements GameDAO {
 		return results;		
 	}
 
-	@Override
 	public int getGameIdByHash(String hash) {
 		Integer gameId = null;
 		try{
@@ -58,10 +61,9 @@ public class GameDAOImpl extends AbstractDAO implements GameDAO {
 		return gameId;		
 	}
 
-	@Override
 	public List<Game> getGamesByDate() {
 			//String hql = "FROM org.proffart.bet.domain.Game g where g.date <= now()";
-			String hql = "select new map(g.id, g.hash) from Game g where g.date <= now()";
+			String hql = "SELECT new map(g.id, g.hash) from Game g where g.date <= NOW()";
 			Query query = getSession().createQuery(hql);
 			@SuppressWarnings("unchecked")
 			List<Game> results = query.list();
