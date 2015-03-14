@@ -41,7 +41,7 @@ public class User {
 	private Double balance = (double) 0;
 	
 	@Column(name="role")
-	private String role = "user";
+	private String role = "USER";
 	
 	@Column(name="enabled")
 	private boolean enabled = true;
