@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.proffart.bet.dao.UserDAO;
 import org.springframework.context.annotation.Scope;
 
 @XmlRootElement
@@ -41,60 +42,65 @@ public class User {
 	private Double balance = (double) 0;
 	
 	@Column(name="role")
-	private String role = "USER";
+	private String role = UserDAO.USER;
 	
 	@Column(name="enabled")
 	private boolean enabled = true;
-	
-	public String getEmail(){
-		return email;
-	}
-	
-	public void setEmail(String email){
-		this.email = email;
-	}
-	
-	public String getNickName(){
-		return nickName;
-	}
-	
-	public void setNickName(String nickName){
-		this.nickName = nickName;
-	}
-	
-	public String getPassword(){
-		return password;
-	}
-	
-	public void setPassword(String password){
-		this.password = password;
-	}
-	
-	public Double getBalance(){
-		return balance;
-	}
-	
-	public void setBalance(Double balance){
-		this.balance = balance;
-	}
-	
-	
-	public Integer getId(){
+
+	public Integer getId() {
 		return id;
 	}
-	
-	public void setId(int id){
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	private String a;
 
-	public String getA() {
-		return a;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setA(String a) {
-		this.a = a;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }
