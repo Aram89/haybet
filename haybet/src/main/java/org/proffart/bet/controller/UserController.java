@@ -1,6 +1,7 @@
 package org.proffart.bet.controller;
 import javax.validation.Valid;
 
+import org.proffart.bet.dao.UserDAO;
 import org.proffart.bet.domain.User;
 import org.proffart.bet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,25 +27,26 @@ public class UserController {
 	//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@RequestMapping(value="login", method = RequestMethod.GET)
-	public String showLoginForm(ModelMap model){
+	public String showLoginForm(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user",user );
 		return "login";
 	}
 	
 	@RequestMapping(value="login", method = RequestMethod.POST)
-	public ModelAndView signIn(@ModelAttribute("user") User user, BindingResult result,
-            ModelMap model){
+	public ModelAndView signIn(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
 		if (service.checkCredentials(user.getNickName(), user.getPassword())){
-			model.addAttribute("userobj", "user");
+			model.addAttribute("userobj", user);
 			return new ModelAndView("bets", "user", user);
 		}
-		model.addAttribute("userobj", "guest");
+		User guest = new User();
+		guest.setRole(UserDAO.GUEST);
+		model.addAttribute("userobj", guest);
 		return new ModelAndView("login", "user", user);		
 	}
 	
 	@RequestMapping(value="register", method = RequestMethod.GET)
-	public String showRegisterForm(ModelMap model){
+	public String showRegisterForm(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user",user );
 		return "register";
@@ -52,11 +54,10 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public ModelAndView registerUser(@ModelAttribute("user") @Valid User user, BindingResult result,
-            ModelMap model){
-		System.out.println(result);
+	public ModelAndView registerUser(@ModelAttribute("user") @Valid User user, BindingResult result, ModelMap model) {
+		//System.out.println(result);
 		if (result.hasErrors()){
-			System.out.println(result.getAllErrors());
+			//System.out.println(result.getAllErrors());
 			return new ModelAndView("user");
 		}
 		
