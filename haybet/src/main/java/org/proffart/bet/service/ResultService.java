@@ -1,17 +1,28 @@
 package org.proffart.bet.service;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.transaction.Transactional;
 
 import org.proffart.bet.dao.ResultDAO;
 import org.proffart.bet.domain.Betting;
 import org.proffart.bet.domain.Result;
+import org.proffart.bet.domain.TmpResult;
+import org.proffart.bet.utils.ReflectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+@Transactional
 public class ResultService {
 	
 	@Autowired
 	ResultDAO dao;
 	
+	@Autowired
+	GameService service;
+		
 	public void addResult(Result result){
 		dao.saveResult(result);
 	}
@@ -43,68 +54,9 @@ public class ResultService {
 				bet.setT_12(true);
 				bet.setT_x2(true);
 			}
-			
-			
-			switch (sum) {
-			case 0:
-				bet.setT_m_05(true);
-				bet.setT_m_15(true);
-				bet.setT_m_25(true);
-				bet.setT_m_35(true);
-				bet.setT_m_45(true);
-				bet.setT_m_55(true);				
-				break;
-			case 1:
-				bet.setT_b_05(true);
-				bet.setT_m_15(true);
-				bet.setT_m_25(true);
-				bet.setT_m_35(true);
-				bet.setT_m_45(true);
-				bet.setT_m_55(true);				
-				break;
-			case 2:
-				bet.setT_b_05(true);
-				bet.setT_b_15(true);
-				bet.setT_m_25(true);
-				bet.setT_m_35(true);
-				bet.setT_m_45(true);
-				bet.setT_m_55(true);		
-				break;
-			case 3:
-				bet.setT_b_05(true);
-				bet.setT_b_15(true);
-				bet.setT_b_25(true);
-				bet.setT_m_35(true);
-				bet.setT_m_45(true);
-				bet.setT_m_55(true);		
-				break;
-			case 4:
-				bet.setT_b_05(true);
-				bet.setT_b_15(true);
-				bet.setT_b_25(true);
-				bet.setT_b_35(true);
-				bet.setT_m_45(true);
-				bet.setT_m_55(true);		
-				break;
-			case 5:
-				bet.setT_b_05(true);
-				bet.setT_b_15(true);
-				bet.setT_b_25(true);
-				bet.setT_b_35(true);
-				bet.setT_b_45(true);
-				bet.setT_m_55(true);				
-				break;
-			case 6:
-				bet.setT_b_05(true);
-				bet.setT_b_15(true);
-				bet.setT_b_25(true);
-				bet.setT_b_35(true);
-				bet.setT_b_45(true);
-				bet.setT_b_55(true);
-				break;				
-			default:
-				break;
-			}			
+			ReflectUtils.callSetters(bet, 1, team1Score, true);
+			ReflectUtils.callSetters(bet, 2, team2Score, true);
+			ReflectUtils.callSetters(bet, 0, sum, true);			
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -112,4 +64,17 @@ public class ResultService {
 		return bet;		
 	}
 	
+	public void saveResults (List <TmpResult> tmpResults){
+		Map <String, Integer> games = service.getGamesByDate();
+		for (TmpResult res : tmpResults){
+			String key = res.getuString();
+			if (games.containsKey(key)){
+				Result result = new Result();
+				result.setGameID(games.get(key));
+				result.setDate(res.getDateTime());
+				result.setScore(res.getGameResult());
+				dao.saveResult(result);
+			}
+		}		
+	}
 }
