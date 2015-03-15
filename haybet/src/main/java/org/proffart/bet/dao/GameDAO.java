@@ -1,6 +1,7 @@
 package org.proffart.bet.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.proffart.bet.domain.Game;
 
@@ -11,6 +12,6 @@ public interface GameDAO {
 	public List<Game> getGames4Tournament(int tournamentID);
 	public List<Game> getGames(Integer minID, Integer maxID);
 	public int getGameIdByHash(String hash);
-	public List<Game> getGamesByDate();
+	public Map<String, Integer> getGamesByDate();
 
 }
