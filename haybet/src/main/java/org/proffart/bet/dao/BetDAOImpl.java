@@ -12,7 +12,7 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
 		
 	}
 	
-	public int crateGroup(double amount, double coefficient, int betsCount) {
+	public int createGroup(double amount, double coefficient, int betsCount) {
 		int groupID = 0;
 		BetGroup betGroup = new BetGroup();
 		betGroup.setUserID(0); //TODO user get session
@@ -26,7 +26,7 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
 		return groupID;
 	}
 	
-	public int crateBet(int groupID, int gameID, String betType) {
+	public int createBet(int groupID, int gameID, String betType) {
 		int betID = 0;
 		Bet bet = new Bet();
 		bet.setBetGroupID(groupID);
