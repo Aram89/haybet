@@ -24,7 +24,7 @@ public class TournamentDAOImpl extends AbstractDAO implements TournamentDAO {
 		String hql = "FROM org.proffart.bet.domain.Tournament ORDER BY countryTotoID";
 		Query query = getSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
-		List<Tournament> results = query.list();
+		List<Tournament> results = (List<Tournament>) query.list();
 		return results;		
 	}
 
