@@ -4,7 +4,7 @@ CREATE TABLE `users` (
   `email` char(150) DEFAULT NOT NULL,
   `password` char(255) DEFAULT NOT NULL,
   `balance` decimal(20) DEFAULT '0',
-  `role`  ENUM('ADMIN', 'USER') NOT NULL DEFAULT 'USER',
+  `role`  ENUM('GUEST', 'USER', 'ADMIN') NOT NULL DEFAULT 'USER',
   `enabled` tinyint(1) DEFAULT '0', 
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
