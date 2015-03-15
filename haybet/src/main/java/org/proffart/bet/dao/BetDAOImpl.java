@@ -1,5 +1,10 @@
 package org.proffart.bet.dao;
 
+import java.util.List;
+
+
+
+import org.hibernate.Query;
 import org.proffart.bet.domain.Bet;
 import org.proffart.bet.domain.BetGroup;
 import org.springframework.stereotype.Repository;
@@ -12,7 +17,7 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
 		
 	}
 	
-	public int createGroup(double amount, double coefficient, int betsCount) {
+	public Integer createGroup(Double amount, Double coefficient, Integer betsCount) {
 		int groupID = 0;
 		BetGroup betGroup = new BetGroup();
 		betGroup.setUserID(0); //TODO user get session
@@ -26,7 +31,7 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
 		return groupID;
 	}
 	
-	public int createBet(int groupID, int gameID, String betType) {
+	public Integer createBet(Integer groupID, Integer gameID, String betType) {
 		int betID = 0;
 		Bet bet = new Bet();
 		bet.setBetGroupID(groupID);
@@ -38,6 +43,15 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
 		betID = bet.getID();
 		return betID; 
 	}
+	
+	public List<Bet> getBets() {
+		String hql = "FROM org.proffart.bet.domain.Bet b where b.status=WAIT";
+		Query query = getSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Bet> results = query.list();
+		return results;
+	}
+	
 	
 	
 
