@@ -3,7 +3,6 @@ package org.proffart.bet.dao;
 import java.util.List;
 
 import org.proffart.bet.domain.Country;
-import org.proffart.bet.domain.Tournament;
 
 public interface CountryDAO {
 
