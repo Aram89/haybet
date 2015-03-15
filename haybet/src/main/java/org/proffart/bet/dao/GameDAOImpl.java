@@ -1,6 +1,8 @@
 package org.proffart.bet.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.proffart.bet.domain.Game;
@@ -61,13 +63,14 @@ public class GameDAOImpl extends AbstractDAO implements GameDAO {
 		return gameId;		
 	}
 
-	public List<Game> getGamesByDate() {
-			//String hql = "FROM org.proffart.bet.domain.Game g where g.date <= now()";
-			String hql = "SELECT new map(g.id, g.hash) from Game g where g.date <= NOW()";
-			Query query = getSession().createQuery(hql);
-			@SuppressWarnings("unchecked")
-			List<Game> results = query.list();
-			return results;		
+	public Map<String, Integer> getGamesByDate() {
+		String hql = "select g.uString, g.id from Game g where g.date <= now()";
+		List<Object[]> rows = getSession().createQuery(hql).list();
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		for (Object[] row : rows) {
+			result.put((String) row[0], (Integer) row[1]);
 		}
-		
+		return result;
+	}
+
 }
