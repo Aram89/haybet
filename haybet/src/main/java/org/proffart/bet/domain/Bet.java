@@ -9,13 +9,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="bet")
-public class Bet implements Serializable{
+public class Bet implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="id")
 	private int ID;
 	@Column(name="bet_group_id")
-	private double betGroupID;
+	private int betGroupID;
 	@Column(name="game_id")
 	private int gameID;
 	@Column(name="bet_type")
@@ -31,10 +32,10 @@ public class Bet implements Serializable{
 	public void setID(int iD) {
 		ID = iD;
 	}
-	public double getBetGroupID() {
+	public int getBetGroupID() {
 		return betGroupID;
 	}
-	public void setBetGroupID(double betGroupID) {
+	public void setBetGroupID(int betGroupID) {
 		this.betGroupID = betGroupID;
 	}
 	public int getGameID() {
