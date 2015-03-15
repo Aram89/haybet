@@ -30,9 +30,9 @@ public class BetService {
 	public void doBet(BetTmpStructure betTmpStructure) {
 		double coefficient = collectCoefficient(betTmpStructure.getGames());
 		int betsCount = betTmpStructure.getBetsCount();
-		int groupID = dao.crateGroup(betTmpStructure.getAmount(), coefficient, betsCount);
+		int groupID = dao.createGroup(betTmpStructure.getAmount(), coefficient, betsCount);
 		for(BetTmpStructure.GameTmpStructure gameTmpStructure : betTmpStructure.getGames()) {
-			dao.crateBet(groupID, gameTmpStructure.getGameId(), gameTmpStructure.getBetType());
+			dao.createBet(groupID, gameTmpStructure.getGameId(), gameTmpStructure.getBetType());
 		}
 	}
 	
