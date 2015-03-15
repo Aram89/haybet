@@ -10,6 +10,7 @@ public class FileReader {
 	public static String readJson(String filePath) throws IOException {
 		BufferedReader br = null;
 		try {
+			//test
 			FileInputStream fis = new FileInputStream(filePath);
 			br = new BufferedReader(new InputStreamReader(fis, "UTF8"));
 			StringBuilder sb = new StringBuilder();
