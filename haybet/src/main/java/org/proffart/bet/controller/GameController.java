@@ -24,21 +24,18 @@ public class GameController {
 	@RequestMapping(value="aaa", method = RequestMethod.GET)
 	public String showBets(ModelMap model, HttpSession session){
 		try{
-			String countries = FileReader.readJson("C:\\Users\\Aram\\Downloads\\country (2).json");
-			String tournaments = FileReader.readJson("C:\\Users\\Aram\\Downloads\\tournament (2).json");
-			String games = FileReader.readJson("C:\\Users\\Aram\\Downloads\\games (2).json");
+			String countries = FileReader.readJson("D:\\WebServers\\home\\test4.loc\\www\\toto\\country.json");
+			String tournaments = FileReader.readJson("D:\\WebServers\\home\\test4.loc\\www\\toto\\tournament.json");
+			String games = FileReader.readJson("D:\\WebServers\\home\\test4.loc\\www\\toto\\games.json");
 			ObjectMapper mapper = new ObjectMapper();
-			List<Country> c = mapper.readValue(countries, TypeFactory.defaultInstance().constructCollectionType(List.class,  
-					   Country.class));
-			List<Tournament> t = mapper.readValue(tournaments, TypeFactory.defaultInstance().constructCollectionType(List.class,  
-					   Tournament.class));
-			List<Game> g = mapper.readValue(games, TypeFactory.defaultInstance().constructCollectionType(List.class,  
-					   Game.class));
+			List<Country> c = mapper.readValue(countries, TypeFactory.defaultInstance().constructCollectionType(List.class, Country.class));
+			List<Tournament> t = mapper.readValue(tournaments, TypeFactory.defaultInstance().constructCollectionType(List.class, Tournament.class));
+			List<Game> g = mapper.readValue(games, TypeFactory.defaultInstance().constructCollectionType(List.class, Game.class));
 			List<Game> newGames = service.check4NewGames(g,0,12000000);
 			System.out.println("AAAAAAAA" + newGames);
 			service.addCountries(c);
 			service.addTournaments(t);
-			service.addGames(newGames);
+			service.addGames(g);
 		}
 		catch(Exception e){
 			e.printStackTrace();
