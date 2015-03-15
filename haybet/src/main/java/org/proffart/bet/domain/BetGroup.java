@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name="bet_group")
 public class BetGroup implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="id")
 	private int ID;
