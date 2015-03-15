@@ -6,7 +6,7 @@ public interface BetDAO {
 	final public static String WAIT = "WAIT";
 	
 	public void setStatus();
-	public int crateGroup(double amount, double coefficient, int betsCount);
-	public int crateBet(int groupID, int gameID, String betType);
+	public int createGroup(double amount, double coefficient, int betsCount);
+	public int createBet(int groupID, int gameID, String betType);
 	
 }
