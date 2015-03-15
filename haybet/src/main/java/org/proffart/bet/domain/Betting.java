@@ -1,9 +1,12 @@
 package org.proffart.bet.domain;
 
-import javax.persistence.Column;
+import java.io.Serializable;
 
-public class Betting {
 
+public class Betting implements Serializable {
+	
+	private static final long serialVersionUID = -1689460358450872544L;
+	
 	private String uString;
 	private boolean t_p1;
 	public String getuString() {
