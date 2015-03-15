@@ -83,7 +83,10 @@ public class GameService {
 				newGames.add(g);
 			}
 		}
-		return newGames;
-		
+		return newGames;		
+	}
+	
+	public Map <String, Integer> getGamesByDate(){
+		return gDAO.getGamesByDate();
 	}
 }
