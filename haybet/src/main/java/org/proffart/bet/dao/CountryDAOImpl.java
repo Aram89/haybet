@@ -22,7 +22,8 @@ public class CountryDAOImpl extends AbstractDAO implements CountryDAO{
 	public List<Country> getCountriesList() {
 		String hql = "FROM org.proffart.bet.domain.Country";
 		Query query = getSession().createQuery(hql);
-		List results = query.list();
+		@SuppressWarnings("unchecked")
+		List<Country> results = (List<Country>) query.list();
 		return results;
 	}
 
