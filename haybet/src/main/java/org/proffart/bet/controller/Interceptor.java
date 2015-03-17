@@ -27,7 +27,11 @@ public class Interceptor implements HandlerInterceptor{
 		
 		if(req.isRequestedSessionIdValid() && user instanceof User) {
 			isLogined = user.getRole() != UserDAO.GUEST;
-		}		
+		} else {
+			User guest = new User();
+			guest.setRole(UserDAO.GUEST);
+			session.setAttribute("userobj", guest);
+		}
 		return isLogined;
 	}
 }
