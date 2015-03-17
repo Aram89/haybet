@@ -25,6 +25,19 @@ public class UserService {
 		dao.addUser(user);
 	}
 	public User getUserByNickName(String nickName) {
-		return dao.getUsreByNickName(nickName);
+		return dao.getUserByNickName(nickName);
 	}
+	public void debit(User user, double balance) {
+		balance = user.getBalance() - balance;
+		if(balance < 0) balance = 0;
+		user.setBalance(balance);
+		dao.updateBalance(user.getId(), user.getBalance());
+	}
+	public void credit(User user, double balance) {
+		balance = user.getBalance() + balance;
+		user.setBalance(balance);
+		dao.updateBalance(user.getId(), user.getBalance());
+	}
+	 
+	
 }
