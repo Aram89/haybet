@@ -31,11 +31,20 @@ public class UserDAOImpl extends AbstractDAO implements UserDAO {
 		String pass = results.get(0).toString();
 		return pass;
 	}
+	
 	public User getUserByNickName(String nickName) {
 		String hql = "SELECT u FROM org.proffart.bet.domain.User u WHERE u.nickName = :nickName";
 		Query  query = getSession().createQuery(hql);
 		query.setString("nickName", nickName);
 		return (User) query.uniqueResult();
+	}
+	
+	public void updateBalance(Integer userID, Double balance) {
+		String hql = "UPDATE org.proffart.bet.domain.User u SET u.balance = :balance WHERE u.id = :userID";
+		Query  query = getSession().createQuery(hql);
+		query.setInteger("userID", userID);
+		query.setDouble("balance", balance);
+		query.executeUpdate();
 	}
 
 }
