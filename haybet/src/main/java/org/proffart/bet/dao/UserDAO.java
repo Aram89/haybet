@@ -14,5 +14,6 @@ public interface UserDAO {
 	public String getPassword(String userName);
 	public void deleteUser(Integer id);
 	public List<User> getUsers();
+	public void updateBalance(Integer userID, Double balance);
 
 }
