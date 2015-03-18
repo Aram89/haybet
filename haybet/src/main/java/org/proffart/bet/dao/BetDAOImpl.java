@@ -51,7 +51,6 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
     }
 
     public Map<Integer, Bet> getBets() {
-        GregorianCalendar gregorianCalendar = new GregorianCalendar();
         Date now = new Date(System.currentTimeMillis());
         DetachedCriteria ownerCriteria = DetachedCriteria.forClass(Game.class);
         ownerCriteria.setProjection(Property.forName("id"));
@@ -61,7 +60,8 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         criteria.add(Property.forName("gameID").in(ownerCriteria));
         criteria.add(Restrictions.eq("status", "WAIT"));
         Map<Integer, Bet> bets  = new HashMap<Integer, Bet>();
-        List<Bet> results = criteria.list();
+        @SuppressWarnings("unchecked")
+		List<Bet> results = (List<Bet>) criteria.list();
         for (Bet result : results){
             bets.put(result.getGameID(), result);
         }
