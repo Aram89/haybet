@@ -1,4 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="org.proffart.bet.domain.User"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% User user = (User)session.getAttribute("userobj"); %>
+<% String nickName = (user != null) ? user.getNickName() : ""; %>
+<% String balance = (user != null) ? user.getBalance().toString() : ""; %>
 <header class="navbar" id="header-navbar">
 	<div class="container">
 		<a href="<c:url value="/"/>" id="logo" class="navbar-brand">
@@ -53,9 +57,18 @@
 			</div>
 			<div class="nav-no-collapse pull-right" id="header-nav">
 				<ul class="nav navbar-nav pull-right">
-					<li class="mobile-search"><a class="btn"> <i
-							class="fa fa-search"></i>
-					</a>
+					<li>
+						<a class="btn">
+						<b class="user-balance" style="font-size: 18px;">
+							<%= balance %>
+						</b>
+						</a>
+					</li>
+				
+					<!-- <li class="mobile-search">
+						<a class="btn">
+							<i class="fa fa-search"></i>
+						</a>
 						<div class="drowdown-search">
 							<form role="search">
 								<div class="form-group">
@@ -63,10 +76,13 @@
 									<i class="fa fa-search nav-search-icon"></i>
 								</div>
 							</form>
-						</div></li>
+						</div>
+					</li> -->
 					<li class="dropdown profile-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="<c:url value="/resources/img/users/boy-48.png"/>" alt="" /> 
-						<span class="hidden-xs">Scarlett Johansson</span> <b class="caret"></b>
+						<span class="hidden-xs">
+						<%= nickName %>
+						</span> <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
 							<li><a href="<c:url value="/user-profile" />"><i class="fa fa-user"></i>Profile</a></li>
