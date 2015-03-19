@@ -46,7 +46,7 @@
 }
 </style>
 </head>
-<body>
+<body class="theme-white pace-done">
 <div id="theme-wrapper">
 <%@include file="modules/header-navbar.jsp" %>
 
@@ -143,7 +143,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-3">
+									<div class="col-sm-3" style="overflow: hidden;">
 										<div id="game-navigation" class="game-nav-nano">
 											<div class="game-nav-nano-content">
 												<%@include file="modules/country-tournament-nav.jsp" %>
@@ -205,7 +205,7 @@
 											-->
 											
 									</div>
-									<div class="col-sm-6">
+									<div class="col-sm-6" style="overflow: hidden;">
 										<div id="game-content"  class="game-content-nano">
 											<div class="game-content-nano-content">
 											</div>
