@@ -46,6 +46,14 @@ public class UserController {
 		return new ModelAndView("login", "user", user);		
 	}
 	
+	@RequestMapping(value="logout", method = RequestMethod.GET)
+	public String signOut(ModelMap model) {
+		User guest = new User();
+		guest.setRole(UserDAO.GUEST);
+		model.addAttribute("userobj", guest);
+		return "index";
+	}
+	
 	@RequestMapping(value="register", method = RequestMethod.GET)
 	public String showRegisterForm(ModelMap model) {
 		User user = new User();
@@ -54,7 +62,7 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/register", method = RequestMethod.POST)
+	@RequestMapping(value="register", method = RequestMethod.POST)
 	public ModelAndView registerUser(@ModelAttribute("user") @Valid User user, BindingResult result, ModelMap model) {
 		//System.out.println(result);
 		if (result.hasErrors()){
