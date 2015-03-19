@@ -1,8 +1,10 @@
+<%@page import="org.proffart.bet.dao.UserDAO"%>
 <%@page import="org.proffart.bet.domain.User"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% User user = (User)session.getAttribute("userobj"); %>
 <% String nickName = (user != null) ? user.getNickName() : ""; %>
 <% String balance = (user != null) ? user.getBalance().toString() : ""; %>
+<% Boolean isLogined = (user != null) ? user.getRole() != UserDAO.GUEST : false; %>
 <header class="navbar" id="header-navbar">
 	<div class="container">
 		<a href="<c:url value="/"/>" id="logo" class="navbar-brand">
@@ -57,6 +59,7 @@
 			</div>
 			<div class="nav-no-collapse pull-right" id="header-nav">
 				<ul class="nav navbar-nav pull-right">
+					<% if(isLogined) { %>
 					<li>
 						<a class="btn">
 						<b class="user-balance" style="font-size: 18px;">
@@ -78,22 +81,31 @@
 							</form>
 						</div>
 					</li> -->
-					<li class="dropdown profile-dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="<c:url value="/resources/img/users/boy-48.png"/>" alt="" /> 
-						<span class="hidden-xs">
-						<%= nickName %>
-						</span> <b class="caret"></b>
-					</a>
+					
+					<li class="dropdown profile-dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="<c:url value="/resources/img/users/boy-48.png"/>" alt="" /> 
+							<span class="hidden-xs"> <%= nickName %> </span> <b class="caret"></b>
+						</a>
 						<ul class="dropdown-menu">
 							<li><a href="<c:url value="/user-profile" />"><i class="fa fa-user"></i>Profile</a></li>
 <!-- 							<li><a href="#"><i class="fa fa-cog"></i>Settings</a></li> -->
 <!-- 							<li><a href="#"><i class="fa fa-envelope-o"></i>Messages</a></li> -->
 <!-- 							<li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li> -->
-							</ul>
-						</li>
-					<li class="hidden-xxs"><a class="btn"> <i
-							class="fa fa-power-off"></i>
-					</a></li>
+						</ul>
+					</li>
+					<li class="hidden-xxs"> 
+						<a class="btn" href="<c:url value="/logout" />"> <i class="fa fa-power-off"></i></a>
+					</li>
+					<% } else { %>
+					<li>
+						<a class="btn" href="<c:url value="/login" />" >
+						<b class="user-balance" style="font-size: 18px;">
+							Login
+						</b>
+						</a>
+					</li>
+					<% } %>
 				</ul>
 			</div>
 		</div>
