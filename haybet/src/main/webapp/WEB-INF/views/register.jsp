@@ -39,7 +39,9 @@
 						<div class="col-xs-12">
 							<header id="login-header">
 								<div id="login-logo">
+									<a href="<c:url value="/"/>">
 									<img src="<c:url value="/resources/img/logo.png" />" alt="" />
+									</a>
 								</div>
 							</header>
 							<div id="login-box-inner">
@@ -81,11 +83,18 @@
 							</div>
 						</div>
 					</div>
+					<div id="login-box-footer">
+						<div class="row">
+							<div class="col-xs-12">
+								Do have an account? <a href="<c:url value="/login"/>"> Login </a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<%@include file="modules/config-tool.jsp" %>
+<%-- 	<%@include file="modules/config-tool.jsp" %> --%>
 	
 	<script src="<c:url value="/resources/js/demo-skin-changer.js" />"></script>
 	<script src="<c:url value="/resources/js/jquery.js" />"></script>
