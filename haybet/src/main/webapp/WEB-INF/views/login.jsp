@@ -42,7 +42,9 @@
 							<div class="col-xs-12">
 								<header id="login-header">
 									<div id="login-logo">
+										<a href="<c:url value="/"/>">
 										<img src="<c:url value="/resources/img/logo.png" />" alt="" />
+										</a>
 									</div>
 								</header>
 								<div id="login-box-inner">
@@ -76,18 +78,18 @@
 												<p class="social-text">Or login with</p>
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-xs-12 col-sm-6">
-												<button type="submit" class="btn btn-primary col-xs-12 btn-facebook">
-													<i class="fa fa-facebook"></i> facebook
-												</button>
-											</div>
-											<div class="col-xs-12 col-sm-6">
-												<button type="submit" class="btn btn-primary col-xs-12 btn-twitter">
-													<i class="fa fa-twitter"></i> Twitter
-												</button>
-											</div>
-										</div>
+<!-- 										<div class="row"> -->
+<!-- 											<div class="col-xs-12 col-sm-6"> -->
+<!-- 												<button type="submit" class="btn btn-primary col-xs-12 btn-facebook"> -->
+<!-- 													<i class="fa fa-facebook"></i> facebook -->
+<!-- 												</button> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-xs-12 col-sm-6"> -->
+<!-- 												<button type="submit" class="btn btn-primary col-xs-12 btn-twitter"> -->
+<!-- 													<i class="fa fa-twitter"></i> Twitter -->
+<!-- 												</button> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 									</form:form>
 								</div>
 							</div>
@@ -104,7 +106,7 @@
 			</div>
 		</div>
 	</div>
-	<%@include file="modules/config-tool.jsp" %>
+<%-- 	<%@include file="modules/config-tool.jsp" %> --%>
 
 	<script src="<c:url value="/resources/js/demo-skin-changer.js" />"></script>
 	<script src="<c:url value="/resources/js/jquery.js" />"></script>
