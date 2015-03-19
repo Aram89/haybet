@@ -62,7 +62,7 @@
 											Page not found.<br> If you find this page, let us know.
 										</p>
 										<p>
-											Go back to <a href="index.html">homepage</a>.
+											Go back to <a href="<c:url value="/" />">homepage</a>.
 										</p>
 									</div>
 								</div>
