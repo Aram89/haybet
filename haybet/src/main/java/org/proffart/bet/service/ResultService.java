@@ -94,20 +94,23 @@ public class ResultService {
 	}
 
     public void calculateResults (List<Result> results){
-        Map <Integer, Bet> bets = betService.getBets();
+        Map<Integer, List<Bet>> bets = betService.getBets();
         Betting betting = null;
-        Bet bet = new Bet();
+        List <Bet> betsPerGame = new ArrayList<Bet>();
         Boolean status = null;
         for (Result result : results){
             betting = parseResult(result);
             if (bets.containsKey(result.getGameID())){
-                bet = bets.get(result.getGameID());
+                betsPerGame = bets.get(result.getGameID());
             }
-            String betType = bet.getBetType();
-            status = (Boolean)ReflectUtils.callGetter(betType, betting);
-            if (status){
+            for (Bet bet : betsPerGame){
+                String betType = bet.getBetType();
+                status = (Boolean)ReflectUtils.callGetter(betType, betting);
+                if (status){
 
+                }
             }
+
         }
     }
 }

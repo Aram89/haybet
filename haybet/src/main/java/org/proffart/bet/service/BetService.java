@@ -66,7 +66,7 @@ public class BetService {
 		return coefficient;
 	}
 
-    public Map<Integer, Bet> getBets(){
+    public Map<Integer, List<Bet>> getBets(){
         return dao.getBets();
     }
 	

@@ -1,10 +1,7 @@
 package org.proffart.bet.dao;
 
 import java.sql.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
@@ -50,7 +47,7 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         return betID;
     }
 
-    public Map<Integer, Bet> getBets() {
+    public Map<Integer, List<Bet>> getBets() {
         Date now = new Date(System.currentTimeMillis());
         DetachedCriteria ownerCriteria = DetachedCriteria.forClass(Game.class);
         ownerCriteria.setProjection(Property.forName("id"));
@@ -59,11 +56,20 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         Criteria criteria = getSession().createCriteria(Bet.class);
         criteria.add(Property.forName("gameID").in(ownerCriteria));
         criteria.add(Restrictions.eq("status", "WAIT"));
-        Map<Integer, Bet> bets  = new HashMap<Integer, Bet>();
+        Map<Integer, List<Bet>> bets  = new HashMap<Integer, List<Bet>>();
         @SuppressWarnings("unchecked")
 		List<Bet> results = (List<Bet>) criteria.list();
         for (Bet result : results){
-            bets.put(result.getGameID(), result);
+            List<Bet> betsPerGame = null;
+            Integer gameID = result.getGameID();
+            if (bets.containsKey(gameID)){
+                betsPerGame = bets.get(gameID);
+            }
+            else{
+                betsPerGame = new ArrayList<Bet>();
+            }
+            betsPerGame.add(result);
+            bets.put(gameID,betsPerGame);
         }
         return bets;
     }

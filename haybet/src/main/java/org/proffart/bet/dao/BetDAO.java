@@ -1,5 +1,6 @@
 package org.proffart.bet.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.proffart.bet.domain.Bet;
@@ -12,6 +13,6 @@ public interface BetDAO {
     public void setStatus();
     public Integer createGroup(Integer userID, Double amount, Double coefficient, Integer betsCount);
     public Integer createBet(Integer groupID, Integer gameID, String betType);
-    public Map<Integer,Bet> getBets();
+    public Map<Integer,List<Bet>> getBets();
 
 }
