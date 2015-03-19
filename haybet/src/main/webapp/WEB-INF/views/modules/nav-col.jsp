@@ -2,28 +2,18 @@
 <div id="nav-col">
 	<section id="col-left" class="col-left-nano">
 		<div id="col-left-inner" class="col-left-nano-content">
-			<div id="user-left-box"
-				class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">
-				<img alt="" src="<c:url value="/resources/img/samples/scarlet-159.png"/>" />
-				<div class="user-box">
-					<span class="name"> <a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> Scarlett J. <i
-							class="fa fa-angle-down"></i>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="user-profile.html"><i class="fa fa-user"></i>Profile</a></li>
-							<li><a href="#"><i class="fa fa-cog"></i>Settings</a></li>
-							<li><a href="#"><i class="fa fa-envelope-o"></i>Messages</a></li>
-							<li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
-						</ul>
-					</span> <span class="status"> <i class="fa fa-circle"></i> Online
-					</span>
-				</div>
-			</div>
+<%-- <%@include file="user-left-box.jsp" %> --%>
 			<div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav">
 				<ul class="nav nav-pills nav-stacked">
 					<li class="nav-header nav-header-first hidden-sm hidden-xs"> Navigation</li>
 					<li class="active">
+						<a href="<c:url value="/games"/>">
+							<i class="fa fa-th-large"></i>
+							<span>Games</span>
+						</a>
+					</li>
+					
+					<li>
 						<a href="index-2.html"> 
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span> <span class="label label-primary label-circle pull-right">28</span>
 						</a>
@@ -56,9 +46,13 @@
 							<li><a href="graphs-dygraphs.html"> Dygraphs </a></li>
 							<li><a href="graphs-xcharts.html"> xCharts </a></li>
 						</ul></li>
-					<li><a href="widgets.html"> <i class="fa fa-th-large"></i>
-							<span>Widgets</span> <span class="label label-success pull-right">New</span>
-					</a></li>
+					<li>
+						<a href="widgets.html">
+							<i class="fa fa-th-large"></i>
+							<span>Widgets</span> 
+							<span class="label label-success pull-right">New</span>
+						</a>
+					</li>
 					<li><a href="#" class="dropdown-toggle"> <i
 							class="fa fa-copy"></i> <span>Pages</span> <i
 							class="fa fa-angle-right drop-icon"></i>
