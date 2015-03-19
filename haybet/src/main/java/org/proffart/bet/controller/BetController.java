@@ -6,9 +6,11 @@ import java.util.List;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.type.TypeFactory;
 import org.proffart.bet.domain.BetTmpStructure;
 import org.proffart.bet.domain.Events;
 import org.proffart.bet.domain.Game;
+import org.proffart.bet.domain.TmpResult;
 import org.proffart.bet.service.GameService;
 import org.proffart.bet.service.BetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 
 
 @Controller
@@ -28,15 +31,21 @@ public class BetController {
 	
 	@Autowired
 	BetService betService;
-		
-	@RequestMapping(value="games", method = RequestMethod.GET)
+
+    @RequestMapping(value="bets", method = RequestMethod.GET)
+    public void getBets(ModelMap model){
+        betService.getBets();
+    }
+
+
+    @RequestMapping(value="games", method = RequestMethod.GET)
 	public String getEvents(ModelMap model){
 		Events event = new Events();
 		event.setTournamnetsByCounty(service.getTournamnetsByCounty());
 		model.addAttribute("event",event);
 		return "games";
 	}
-	
+
 	@RequestMapping(value="games",params = {"tournamentID"}, method = RequestMethod.GET)
 	public @ResponseBody List<Game> getGames(@RequestParam(value = "tournamentID") String tournamentID,ModelMap model){
 		List <Game> games = null;

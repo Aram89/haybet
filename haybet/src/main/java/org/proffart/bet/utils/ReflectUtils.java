@@ -13,7 +13,7 @@ public class ReflectUtils {
 	 */
 	public static Object callGetter(String fieldName, Object obj){
 		try{
-			Method method = obj.getClass().getMethod("get" + StringUtils.toUpperCase(fieldName));               
+			Method method = obj.getClass().getMethod("is" + StringUtils.toUpperCase(fieldName));
 			return method.invoke(obj);
 		}
 		catch (Exception e){

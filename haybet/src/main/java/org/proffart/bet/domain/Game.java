@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
 
 @Entity
 @Table(name="game")
@@ -31,7 +32,7 @@ public class Game {
 	private String nameRU;
 	
 	@Column(name="date")
-	private String date;
+	private Date date;
 	
 	
 	@Column(name="t_p1")
@@ -200,11 +201,11 @@ public class Game {
 		this.nameRU = nameRU;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
