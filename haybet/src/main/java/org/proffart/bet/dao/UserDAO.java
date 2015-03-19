@@ -10,8 +10,10 @@ public interface UserDAO {
 	final public static String ADMIN = "ADMIN";
 	
 	public void addUser(User user);
+	public User getUserByNickName(String nickName);
 	public String getPassword(String userName);
 	public void deleteUser(Integer id);
 	public List<User> getUsers();
+	public void updateBalance(Integer userID, Double balance);
 
 }

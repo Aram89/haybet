@@ -10,7 +10,7 @@ public interface BetDAO {
 	final public static String WAIT = "WAIT";
 	
 	public void setStatus();
-	public Integer createGroup(Double amount, Double coefficient, Integer betsCount);
+	public Integer createGroup(Integer userID, Double amount, Double coefficient, Integer betsCount);
 	public Integer createBet(Integer groupID, Integer gameID, String betType);
 	public List <Bet> getBets();
 	

@@ -1,8 +1,8 @@
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nick_name` char(50) DEFAULT NOT NULL,
-  `email` char(150) DEFAULT NOT NULL,
-  `password` char(255) DEFAULT NOT NULL,
+  `nick_name` char(50) NOT NULL,
+  `email` char(150) NOT NULL,
+  `password` char(255) NOT NULL,
   `balance` decimal(20) DEFAULT '0',
   `role`  ENUM('GUEST', 'USER', 'ADMIN') NOT NULL DEFAULT 'USER',
   `enabled` tinyint(1) DEFAULT '0', 

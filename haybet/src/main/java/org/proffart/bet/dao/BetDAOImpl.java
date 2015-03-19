@@ -17,10 +17,10 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
 		
 	}
 	
-	public Integer createGroup(Double amount, Double coefficient, Integer betsCount) {
+	public Integer createGroup(Integer userID, Double amount, Double coefficient, Integer betsCount) {
 		int groupID = 0;
 		BetGroup betGroup = new BetGroup();
-		betGroup.setUserID(0); //TODO user get session
+		betGroup.setUserID(userID);
 		betGroup.setAmount(amount);
 		betGroup.setCoefficient(coefficient);
 		betGroup.setBetsCount(betsCount);

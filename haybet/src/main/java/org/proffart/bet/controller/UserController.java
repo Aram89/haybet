@@ -36,6 +36,7 @@ public class UserController {
 	@RequestMapping(value="login", method = RequestMethod.POST)
 	public ModelAndView signIn(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
 		if (service.checkCredentials(user.getNickName(), user.getPassword())){
+			user = service.getUserByNickName(user.getNickName());
 			model.addAttribute("userobj", user);
 			return new ModelAndView("bets", "user", user);
 		}
