@@ -107,10 +107,12 @@ public class ResultService {
                 String betType = bet.getBetType();
                 status = (Boolean)ReflectUtils.callGetter(betType, betting);
                 if (status){
-
+                    betService.updateStatus(bet.getID(), "OK");
+                }
+                else {
+                    betService.updateStatus(bet.getID(),"NOK");
                 }
             }
-
         }
     }
 }

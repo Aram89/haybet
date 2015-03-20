@@ -10,14 +10,31 @@ import org.hibernate.criterion.Restrictions;
 import org.proffart.bet.domain.Bet;
 import org.proffart.bet.domain.BetGroup;
 import org.proffart.bet.domain.Game;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.hibernate.*;
 
 @Repository
 public class BetDAOImpl extends AbstractDAO implements BetDAO {
 
-    public void setStatus() {
+    @Autowired
+    SessionFactory factory;
 
-
+    public void updateStatus(Integer id, String status) {
+        Session session = factory.openSession();//getSession();
+        Transaction tx = null;
+        String hqlUpdate = "UPDATE org.proffart.bet.domain.Bet set status = :status where id = :id";
+        try{
+            tx = session.beginTransaction();
+            Query query = session.createQuery(hqlUpdate);
+            query.setParameter("status", status).setParameter("id", id).executeUpdate();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
     }
 
 	public Integer createGroup(Integer userID, Double amount, Double coefficient, Integer betsCount) {

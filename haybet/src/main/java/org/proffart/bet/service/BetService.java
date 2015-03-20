@@ -69,6 +69,9 @@ public class BetService {
     public Map<Integer, List<Bet>> getBets(){
         return dao.getBets();
     }
-	
+
+    public void updateStatus (Integer id, String status){
+        dao.updateStatus(id, status);
+    }
 	
 }
