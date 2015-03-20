@@ -1,7 +1,6 @@
 package org.proffart.bet.controller;
 import javax.validation.Valid;
 
-import org.proffart.bet.dao.UserDAO;
 import org.proffart.bet.domain.User;
 import org.proffart.bet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
