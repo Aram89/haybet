@@ -40,17 +40,13 @@ public class UserController {
 			model.addAttribute("userobj", user);
 			return new ModelAndView("bets", "user", user);
 		}
-		User guest = new User();
-		guest.setRole(UserDAO.GUEST);
-		model.addAttribute("userobj", guest);
+		model.addAttribute("userobj", UserService.getGuest());
 		return new ModelAndView("login", "user", user);		
 	}
 	
 	@RequestMapping(value="logout", method = RequestMethod.GET)
 	public String signOut(ModelMap model) {
-		User guest = new User();
-		guest.setRole(UserDAO.GUEST);
-		model.addAttribute("userobj", guest);
+		model.addAttribute("userobj", UserService.getGuest());
 		return "index";
 	}
 	
