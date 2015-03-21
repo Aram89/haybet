@@ -27,9 +27,9 @@ public class ResultController {
     @RequestMapping(value="result", method = RequestMethod.GET)
 	public void showResults(ModelMap model, HttpSession session){
 		try{
-			String countries = FileReader.readJson("C:\\Users\\Aram\\Downloads\\results.json");
+			String tmpResults = FileReader.readJson("C:\\Users\\Aram\\Downloads\\results.json");
 			ObjectMapper mapper = new ObjectMapper();
-			List<TmpResult> results = mapper.readValue(countries, TypeFactory.defaultInstance().constructCollectionType(List.class,
+			List<TmpResult> results = mapper.readValue(tmpResults, TypeFactory.defaultInstance().constructCollectionType(List.class,
 					   TmpResult.class));
             service.saveResults(results);
 

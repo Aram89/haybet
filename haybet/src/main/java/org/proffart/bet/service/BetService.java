@@ -8,10 +8,7 @@ import javax.transaction.Transactional;
 
 import org.proffart.bet.dao.BetDAO;
 import org.proffart.bet.dao.GameDAO;
-import org.proffart.bet.domain.Bet;
-import org.proffart.bet.domain.BetTmpStructure;
-import org.proffart.bet.domain.Game;
-import org.proffart.bet.domain.User;
+import org.proffart.bet.domain.*;
 import org.proffart.bet.utils.ReflectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,5 +70,16 @@ public class BetService {
     public void updateStatus (Integer id, String status){
         dao.updateStatus(id, status);
     }
-	
+
+    public void incrementFinishedBetsCount (Integer id){
+            dao.incrementFinishedBetsCount(id);
+    }
+
+    public BetGroup getBetGroup (Integer betId){
+        return dao.getBetGroup(betId);
+    }
+
+    public void updateBetGroupStatus (BetGroup betGroup, String status){
+        dao.updateBetGroupStatus(betGroup, status);
+    }
 }

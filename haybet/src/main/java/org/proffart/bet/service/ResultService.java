@@ -8,10 +8,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 
 import org.proffart.bet.dao.ResultDAO;
-import org.proffart.bet.domain.Bet;
-import org.proffart.bet.domain.Betting;
-import org.proffart.bet.domain.Result;
-import org.proffart.bet.domain.TmpResult;
+import org.proffart.bet.domain.*;
 import org.proffart.bet.utils.ReflectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -106,11 +103,19 @@ public class ResultService {
             for (Bet bet : betsPerGame){
                 String betType = bet.getBetType();
                 status = (Boolean)ReflectUtils.callGetter(betType, betting);
-                if (status){
+                Integer betId = bet.getID();
+                if(status){
                     betService.updateStatus(bet.getID(), "OK");
+                    betService.incrementFinishedBetsCount(bet.getID());
+                    BetGroup betGroup = betService.getBetGroup(betId);
+                     if (betGroup.getFinishedBetsCount() == betGroup.getBetsCount()){
+                         betService.updateBetGroupStatus(betGroup, "OK");
+                     }
                 }
                 else {
-                    betService.updateStatus(bet.getID(),"NOK");
+                    BetGroup betGroup = betService.getBetGroup(betId);
+                    betService.updateStatus(bet.getID(), "NOK");
+                    betService.updateBetGroupStatus(betGroup, "NOK");
                 }
             }
         }

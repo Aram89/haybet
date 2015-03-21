@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.proffart.bet.domain.Bet;
+import org.proffart.bet.domain.BetGroup;
 
 public interface BetDAO {
     final public static String OK = "OK";
@@ -14,5 +15,9 @@ public interface BetDAO {
     public Integer createGroup(Integer userID, Double amount, Double coefficient, Integer betsCount);
     public Integer createBet(Integer groupID, Integer gameID, String betType);
     public Map<Integer,List<Bet>> getBets();
+    public void incrementFinishedBetsCount (Integer id);
+    public BetGroup getBetGroup (Integer betId);
+    public void updateBetGroupStatus (BetGroup betGroup, String status);
+
 
 }
