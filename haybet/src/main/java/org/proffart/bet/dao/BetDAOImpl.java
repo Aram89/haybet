@@ -91,7 +91,6 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         return bets;
     }
 
-    @Override
     public void incrementFinishedBetsCount(Integer id) {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -110,7 +109,6 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         }
     }
 
-    @Override
     public BetGroup getBetGroup(Integer betId) {
         BetGroup betGroup = null;
         DetachedCriteria ownerCriteria = DetachedCriteria.forClass(Bet.class);
