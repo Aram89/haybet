@@ -1,7 +1,6 @@
 package org.proffart.bet.controller;
 import javax.validation.Valid;
 
-import org.proffart.bet.dao.UserDAO;
 import org.proffart.bet.domain.User;
 import org.proffart.bet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,17 +39,13 @@ public class UserController {
 			model.addAttribute("userobj", user);
 			return new ModelAndView("bets", "user", user);
 		}
-		User guest = new User();
-		guest.setRole(UserDAO.GUEST);
-		model.addAttribute("userobj", guest);
+		model.addAttribute("userobj", UserService.getGuest());
 		return new ModelAndView("login", "user", user);		
 	}
 	
 	@RequestMapping(value="logout", method = RequestMethod.GET)
 	public String signOut(ModelMap model) {
-		User guest = new User();
-		guest.setRole(UserDAO.GUEST);
-		model.addAttribute("userobj", guest);
+		model.addAttribute("userobj", UserService.getGuest());
 		return "index";
 	}
 	

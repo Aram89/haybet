@@ -20,6 +20,7 @@
 			<div class="nav-no-collapse navbar-left pull-left hidden-sm hidden-xs">
 				<ul class="nav navbar-nav pull-left">
 					<li><a class="btn" id="make-small-nav"> <i class="fa fa-bars"></i></a></li>
+					<% if(isLogined) { %>
 					<li class="dropdown hidden-xs"><a class="btn dropdown-toggle" data-toggle="dropdown">
 						<i class="fa fa-bell"></i> <span class="count">6</span> </a>
 						<ul class="dropdown-menu notifications-list">
@@ -55,6 +56,7 @@
 							<li class="item-footer"><a href="#"> View all notifications </a></li>
 						</ul>
 					</li>
+					<% } %>
 				</ul>
 			</div>
 			<div class="nav-no-collapse pull-right" id="header-nav">

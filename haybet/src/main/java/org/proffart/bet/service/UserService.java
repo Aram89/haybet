@@ -38,6 +38,11 @@ public class UserService {
 		user.setBalance(balance);
 		dao.updateBalance(user.getId(), user.getBalance());
 	}
+	public static User getGuest() {
+		User guest = new User();
+		guest.setRole(UserDAO.GUEST);
+		return guest; 
+	}
 	 
 	
 }

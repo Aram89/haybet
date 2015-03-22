@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.proffart.bet.dao.UserDAO;
 import org.proffart.bet.domain.User;
+import org.proffart.bet.service.UserService;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,9 +29,7 @@ public class Interceptor implements HandlerInterceptor{
 		if(req.isRequestedSessionIdValid() && user instanceof User) {
 			isLogined = user.getRole() != UserDAO.GUEST;
 		} else {
-			User guest = new User();
-			guest.setRole(UserDAO.GUEST);
-			session.setAttribute("userobj", guest);
+			session.setAttribute("userobj", UserService.getGuest());
 		}
 		return isLogined;
 	}
