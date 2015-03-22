@@ -26,15 +26,15 @@ public class GameService {
 	TournamentDAO tDAO;
 	
 	@Autowired
-	GameDAO gDAO;
+	GameDAO gameDAO;
 	
 	
 	public void addGames(List<Game> games){
-		gDAO.addGames(games);
+		gameDAO.addGames(games);
 	}
 	
 	public List<Game> getGames (int tournamentID){
-		return gDAO.getGames4Tournament(tournamentID);
+		return gameDAO.getGames4Tournament(tournamentID);
 	}
 	
 	public void addCountries(List<Country> countries){
@@ -75,7 +75,7 @@ public class GameService {
 	}
 	
 	public List<Game> check4NewGames(List<Game> fromJSON, int minID, int maxID){
-		List <Game> fromDB = gDAO.getGames(minID, maxID);
+		List <Game> fromDB = gameDAO.getGames(minID, maxID);
 		List<Game> newGames = new ArrayList<Game>();
 		for (Game g : fromJSON){
 			if (fromDB.contains(g)){
@@ -87,6 +87,10 @@ public class GameService {
 	}
 	
 	public Map <String, Integer> getGamesByDate(){
-		return gDAO.getGamesByDate();
+		return gameDAO.getGamesByDate();
+	}
+	
+	public List<Game> getLastActiveGames() {
+		return gameDAO.getLastActiveGames();
 	}
 }
