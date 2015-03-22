@@ -21,7 +21,7 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
     SessionFactory factory;
 
     public void updateStatus(Integer id, String status) {
-        Session session = factory.openSession();//getSession();
+        Session session = factory.openSession();
         Transaction tx = null;
         String hqlUpdate = "UPDATE org.proffart.bet.domain.Bet set status = :status where id = :id";
         try{
@@ -91,7 +91,48 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         return bets;
     }
 
+    @Override
+    public void incrementFinishedBetsCount(Integer id) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        String hqlUpdate = "UPDATE org.proffart.bet.domain.BetGroup SET finishedBetsCount = finishedBetsCount +1" +
+                " WHERE id = :id";
+        try{
+            tx = session.beginTransaction();
+            Query query = session.createQuery(hqlUpdate);
+            query.setParameter("id", id).executeUpdate();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
 
+    @Override
+    public BetGroup getBetGroup(Integer betId) {
+        BetGroup betGroup = null;
+        DetachedCriteria ownerCriteria = DetachedCriteria.forClass(Bet.class);
+        ownerCriteria.setProjection(Property.forName("betGroupID"));
+        ownerCriteria.add(Restrictions.eq("id", betId));
+        Criteria criteria = getSession().createCriteria(BetGroup.class);
+        criteria.add(Property.forName("id").in(ownerCriteria));
+        List results = criteria.list();
+        betGroup = (BetGroup)results.get(0);
+        if (results.size() > 1){
+            //TODO (something is wrong)
+        }
+        return  betGroup;
+    }
 
+    public void updateBetGroupStatus (BetGroup betGroup, String status) {
+        String hqlUpdate = "UPDATE org.proffart.bet.domain.BetGroup SET status = :status" +
+                " WHERE id = :id";
 
+        Map<String,Object> params = new HashMap<String, Object>();
+        params.put("id", betGroup.getID());
+        params.put("status", status);
+        update(hqlUpdate,params);
+    }
 }
