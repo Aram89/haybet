@@ -3,8 +3,14 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% User user = (User)session.getAttribute("userobj"); %>
 <% String nickName = (user != null) ? user.getNickName() : ""; %>
-<% String balance = (user != null) ? user.getBalance().toString() : ""; %>
-<% Boolean isLogined = (user != null) ? user.getRole() != UserDAO.GUEST : false; %>
+<% String balance = (user != null) ? user.getBalance().toString() : "0"; %>
+<% Boolean isLogined = (user != null) ? !user.getRole().equals(UserDAO.GUEST)  : false; %>
+<script type="text/javascript">
+<!--
+window._URL = '<c:url value="/"/>';
+window._BALANCE = <%= balance %>;
+//-->
+</script>
 <header class="navbar" id="header-navbar">
 	<div class="container">
 		<a href="<c:url value="/"/>" id="logo" class="navbar-brand">
