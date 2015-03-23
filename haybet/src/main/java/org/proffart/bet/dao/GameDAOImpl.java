@@ -73,8 +73,9 @@ public class GameDAOImpl extends AbstractDAO implements GameDAO {
 		return result;
 	}
 	public List<Game> getLastActiveGames() {
-		String hql = "FROM org.proffart.bet.domain.Game g WHERE g.date > NOW() ORDER BY g.date ASC LIMIT 20";
+		String hql = "FROM org.proffart.bet.domain.Game g WHERE g.date > NOW() ORDER BY g.date ASC";
 		Query query = getSession().createQuery(hql);
+		query.setMaxResults(20);
 		@SuppressWarnings("unchecked")
 		List<Game> results = query.list();
 		return results;
