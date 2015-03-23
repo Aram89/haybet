@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class BetController {
 	@Autowired
-	GameService service;
+	GameService gameService;
 	@Autowired
 	BetService betService;
 
@@ -34,7 +34,7 @@ public class BetController {
 	@RequestMapping(value = "games", method = RequestMethod.GET)
 	public String getEvents(ModelMap model) {
 		Events event = new Events();
-		event.setTournamnetsByCounty(service.getTournamnetsByCounty());
+		event.setTournamnetsByCounty(gameService.getTournamnetsByCounty());
 		model.addAttribute("event", event);
 		return "games";
 	}
@@ -44,11 +44,16 @@ public class BetController {
 		List<Game> games = null;
 		try {
 			int id = Integer.parseInt(tournamentID);
-			games = service.getGames(id);
+			games = gameService.getGames(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return games;
+	}
+	
+	@RequestMapping(value="games/last", method=RequestMethod.GET)
+	public @ResponseBody List<Game> getLastActiveGames(ModelMap model) {
+		return gameService.getLastActiveGames();
 	}
 
 	@RequestMapping(value = "games/bet", params = { "data" }, method = RequestMethod.POST)

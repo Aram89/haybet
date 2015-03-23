@@ -13,5 +13,6 @@ public interface GameDAO {
 	public List<Game> getGames(Integer minID, Integer maxID);
 	public int getGameIdByHash(String hash);
 	public Map<String, Integer> getGamesByDate();
+	public List<Game> getLastActiveGames();
 
 }
