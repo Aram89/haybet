@@ -3,7 +3,8 @@ $(function($) {
 	var contentElement = $('#game-content .game-content-nano-content');
 	var betContent = $('#bet-content .game-content-nano-content');
 	var betList = {};
-	var userCurrentBalance = 150000;
+	var userCurrentBalance = window._BALANCE;
+	
 	
 	$('.tournament').click(function(){
 		var tournamentID = parseInt( $(this).data('tournament-id'));
@@ -12,14 +13,25 @@ $(function($) {
 			curenntTournamentID = tournamentID;
 			contentElement.html('<p style="font-size: 300%; text-align: center;"><a><i class="fa fa-spinner fa-spin"></i></a></p>');
 			$.ajax({
-				  url: "?tournamentID="+tournamentID,
+				  url: window._URL + "games?tournamentID="+tournamentID,
 				  type: "GET",
 				  dataType: "json",
 				  success : generateGames
 				});
 		}
 		return false;
-	})
+	});
+	function loadLastGames() {
+		$.ajax({
+		  url: window._URL + 'games/last',
+		  type: "GET",
+		  dataType: "json",
+		  success : function(resData){
+			  console.log(resData);
+			  generateGames(resData);
+		  }
+		});
+	}
 	function generateGames(data) {
 		var html = '';
 		for(var i=0; i<data.length; ++i) {
@@ -127,7 +139,7 @@ $(function($) {
 			b.find('.rem-box').fadeOut('fast');
 			el.html('<i class="fa fa-refresh fa-spin"></i> Wait ');
 			$.ajax({
-			  url: window.location.pathname + '/bet',
+			  url: window._URL + 'games/bet',
 			  type: "POST",
 			  dataType: "json",
 			  data : {data : JSON.stringify(data)},
@@ -410,5 +422,6 @@ $(function($) {
 		box += '</div>';
 		return box;
 	}
+	loadLastGames();
 });
 
