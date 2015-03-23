@@ -58,7 +58,28 @@
 				<div id="content-wrapper" class="email-inbox-wrapper">
 					<div class="row">
 						<div class="col-lg-12">
+						 <br>
+						</div>
+					</div>
+					<div class="row">
+					
+						<div class="col-lg-12">
 						
+							<div class="row">
+								<div class="col-sm-8" style="overflow: hidden;">
+									<div id="game-content"  class="game-content-nano">
+										<div class="game-content-nano-content">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div id="bet-content"  class="game-content-nano">
+										<div class="game-content-nano-content game-bet-content">
+										
+										</div>
+									</div>
+								</div>
+							</div>
 						
 						</div>
 					</div>
