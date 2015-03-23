@@ -71,7 +71,7 @@ public class GameService {
 			}
 			
 		}
-		return tournamnentsByCountry;		
+		return tournamnentsByCountry;
 	}
 	
 	public List<Game> check4NewGames(List<Game> fromJSON, int minID, int maxID){
