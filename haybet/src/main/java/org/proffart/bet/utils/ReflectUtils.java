@@ -1,5 +1,6 @@
 package org.proffart.bet.utils;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -13,8 +14,9 @@ public class ReflectUtils {
 	 */
 	public static Object callGetter(String fieldName, Object obj){
 		try{
-			Method method = obj.getClass().getMethod("is" + StringUtils.toUpperCase(fieldName));
-			return method.invoke(obj);
+			Field field = obj.getClass().getDeclaredField(fieldName);
+			field.setAccessible(true);
+			return field.get(obj);
 		}
 		catch (Exception e){
 			return null;
