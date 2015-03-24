@@ -9,6 +9,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.proffart.bet.domain.BetTmpStructure;
 import org.proffart.bet.domain.Events;
 import org.proffart.bet.domain.Game;
+import org.proffart.bet.domain.UserBets;
 import org.proffart.bet.service.BetService;
 import org.proffart.bet.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BetController {
@@ -62,4 +64,17 @@ public class BetController {
 		betService.doBet(betJSON);
 		return betJSON;
 	}
+
+    @RequestMapping(value = "userbets", params = { "userID" }, method = RequestMethod.GET)
+    public ModelAndView getUserBets( @RequestParam(value = "userID") String userID) {
+        List<UserBets> userBets = null;
+        try {
+            Integer id = Integer.parseInt(userID);
+            userBets = betService.getBetsPerUser(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ModelAndView modelAndView = new ModelAndView("userBets", "userBets", userBets);
+        return modelAndView;
+    }
 }

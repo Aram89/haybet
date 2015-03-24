@@ -82,4 +82,8 @@ public class BetService {
     public void updateBetGroupStatus (BetGroup betGroup, String status){
         dao.updateBetGroupStatus(betGroup, status);
     }
+
+    public List<UserBets> getBetsPerUser (Integer userId) {
+        return dao.getBetsPerUser(userId);
+    }
 }

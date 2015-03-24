@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.proffart.bet.domain.Bet;
 import org.proffart.bet.domain.BetGroup;
+import org.proffart.bet.domain.UserBets;
 
 public interface BetDAO {
     final public static String OK = "OK";
@@ -18,6 +19,7 @@ public interface BetDAO {
     public void incrementFinishedBetsCount (Integer id);
     public BetGroup getBetGroup (Integer betId);
     public void updateBetGroupStatus (BetGroup betGroup, String status);
+    public List<UserBets> getBetsPerUser (Integer userId);
 
 
 }
