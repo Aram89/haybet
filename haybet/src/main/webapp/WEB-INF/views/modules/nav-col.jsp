@@ -19,7 +19,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<c:url value="/results"/>">
+						<a href="<c:url value="/result"/>">
 							<i class="fa fa-th-large"></i>
 							<span>Results</span>
 						</a>
