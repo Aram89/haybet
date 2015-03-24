@@ -20,33 +20,40 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 	@Autowired
-	UserService service;
+	UserService userService;
 	//private static final Logger log = Logger.getLogger(BetController.class);
 	//@Autowired
 	//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@RequestMapping(value="login", method = RequestMethod.GET)
 	public String showLoginForm(ModelMap model) {
+		if(UserService.isLogined()) {
+			return "redirect:/user-profile";
+		}
 		User user = new User();
 		model.addAttribute("user",user );
 		return "login";
 	}
 	
 	@RequestMapping(value="login", method = RequestMethod.POST)
-	public ModelAndView signIn(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
-		if (service.checkCredentials(user.getNickName(), user.getPassword())){
-			user = service.getUserByNickName(user.getNickName());
+	public String signIn(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
+		if (userService.checkCredentials(user.getNickName(), user.getPassword())){
+			user = userService.getUserByNickName(user.getNickName());
 			model.addAttribute("userobj", user);
-			return new ModelAndView("bets", "user", user);
+			return "redirect:/user-profile";
+			//return new ModelAndView("bets", "user", user);
 		}
-		model.addAttribute("userobj", UserService.getGuest());
-		return new ModelAndView("login", "user", user);		
+		User guest = UserService.getGuest();
+		guest.setNickName(user.getNickName());
+		model.addAttribute("userobj", guest);
+		return "login";
 	}
 	
 	@RequestMapping(value="logout", method = RequestMethod.GET)
 	public String signOut(ModelMap model) {
 		model.addAttribute("userobj", UserService.getGuest());
-		return "index";
+		//return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="register", method = RequestMethod.GET)
@@ -68,12 +75,18 @@ public class UserController {
 		//String encodedPass = passwordEncoder.encode(user.getPassword());
 		//System.out.println(encodedPass);
 		//user.setPassword(encodedPass);
-		service.saveUser(user);
+		userService.saveUser(user);
 		model.addAttribute("nickName",user.getNickName());
 		model.addAttribute("email",user.getEmail());
 		model.addAttribute("userobj", "true");
 		return new ModelAndView("success","user",user);		
 	}
+
+	@RequestMapping(value="user-profile", method = RequestMethod.GET)
+	public String showUserProfile(ModelMap model) {
+		return "user/user-profile";
+	}
+	
 	
 	
 }
