@@ -1,8 +1,8 @@
-<%@page import="org.proffart.bet.dao.UserDAO"%>
+<%@page import="org.proffart.bet.service.UserService"%>
 <%@page import="org.proffart.bet.domain.User"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% User user = (User)session.getAttribute("userobj"); %>
-<% Boolean isLogined = (user != null) ? !user.getRole().equals(UserDAO.GUEST)  : false; %>
+<% User user = UserService.getCurrentUser(); %>
+<% Boolean isLogined = UserService.isLogined(); %>
 <% String nickName = isLogined ? user.getNickName() : ""; %>
 <% Integer balance = isLogined ? user.getBalance().intValue() : 0; %>
 
