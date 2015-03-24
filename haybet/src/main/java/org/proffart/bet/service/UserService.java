@@ -1,11 +1,14 @@
 package org.proffart.bet.service;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.proffart.bet.dao.UserDAO;
 import org.proffart.bet.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Transactional
 @Service
@@ -42,6 +45,24 @@ public class UserService {
 		User guest = new User();
 		guest.setRole(UserDAO.GUEST);
 		return guest; 
+	}
+	public static User getCurrentUser() {
+		User user;
+		try {
+			ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+			HttpSession session = attr.getRequest().getSession(true);
+			user = (User) session.getAttribute("userobj");
+			if(user == null || user.getRole() == null) {
+				user = getGuest();
+			}
+		} catch(Exception e) {
+			user = getGuest();
+		}
+		return user;
+	}
+	public static Boolean isLogined() {
+		Boolean isLogined = getCurrentUser().getRole() != UserDAO.GUEST;
+		return isLogined;
 	}
 	 
 	
