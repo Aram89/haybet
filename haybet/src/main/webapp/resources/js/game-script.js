@@ -109,6 +109,7 @@ $(function($) {
 				delete betList[key];
 				if(isNaN(val)) val = 0;
 				userCurrentBalance += val;
+				displayUserCurrentBalance();
 				b.fadeOut('fast', function(){
 					b.remove();
 				});
@@ -138,6 +139,8 @@ $(function($) {
 			b.find('.bet-count').attr('readonly', true);
 			b.find('.rem-box').fadeOut('fast');
 			el.html('<i class="fa fa-refresh fa-spin"></i> Wait ');
+			console.log(window._URL + 'games/bet');
+			console.log({data : JSON.stringify(data)});
 			$.ajax({
 			  url: window._URL + 'games/bet',
 			  type: "POST",
@@ -175,6 +178,7 @@ $(function($) {
 			newVal = currBalance;
 		}
 		userCurrentBalance = currBalance - newVal;
+		displayUserCurrentBalance();
 		el.data('value', newVal);
 		if(newVal) {
 			result.html(parseInt(coefficient * newVal));
@@ -421,6 +425,9 @@ $(function($) {
 		box += '</div>';
 		box += '</div>';
 		return box;
+	}
+	function displayUserCurrentBalance() {
+		$('.user-balance').html(userCurrentBalance);
 	}
 	loadLastGames();
 });
