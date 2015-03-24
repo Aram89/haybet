@@ -26,7 +26,7 @@ public class User {
 	@Column(name="nick_name")
 	@Size (min=5, max=10, message="vat es gyada?")
 	@NotNull
-	private String nickName;
+	private String nickName = "";
 	
 	@Column(name="email")
 	@NotNull
