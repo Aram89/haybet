@@ -222,9 +222,7 @@
 							</div>
 						</div>
 					</div>
-					<footer id="footer-bar" class="row hidden-md hidden-lg">
-						<p id="footer-copyright" class="col-xs-12">Powered by Cube Theme.</p>
-					</footer>
+					<%@include file="modules/footer-bar.jsp" %>
 				</div>
 			</div>
 		</div>
