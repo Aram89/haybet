@@ -6,11 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.type.TypeFactory;
-import org.proffart.bet.domain.Country;
-import org.proffart.bet.domain.Game;
 import org.proffart.bet.domain.TmpResult;
-import org.proffart.bet.domain.Tournament;
-import org.proffart.bet.service.GameService;
 import org.proffart.bet.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
