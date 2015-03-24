@@ -2,9 +2,10 @@
 <%@page import="org.proffart.bet.domain.User"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% User user = (User)session.getAttribute("userobj"); %>
-<% String nickName = (user != null) ? user.getNickName() : ""; %>
-<% String balance = (user != null) ? user.getBalance().toString() : "0"; %>
 <% Boolean isLogined = (user != null) ? !user.getRole().equals(UserDAO.GUEST)  : false; %>
+<% String nickName = isLogined ? user.getNickName() : ""; %>
+<% Integer balance = isLogined ? user.getBalance().intValue() : 0; %>
+
 <script type="text/javascript">
 <!--
 window._URL = '<c:url value="/"/>';
