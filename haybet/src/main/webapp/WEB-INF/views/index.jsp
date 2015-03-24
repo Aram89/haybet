@@ -83,9 +83,7 @@
 						
 						</div>
 					</div>
-					<footer id="footer-bar" class="row hidden-md hidden-lg">
-						<p id="footer-copyright" class="col-xs-12">Powered by Cube Theme.</p>
-					</footer>
+					<%@include file="modules/footer-bar.jsp" %>
 				</div>
 			</div>
 		</div>
@@ -142,8 +140,7 @@
 	function setHeightEmailContent() {
 		if ($( document ).width() >= 992) {
 			var windowHeight = $(window).height();
-			var staticContentH = $('#header-navbar').outerHeight() + $('#email-header').outerHeight();
-			staticContentH += ($('#email-box').outerHeight() - $('#email-box').height());
+			var staticContentH = $('#header-navbar').outerHeight() + 45;
 	
 			$('#game-content').css('height', windowHeight - staticContentH);
 		}
