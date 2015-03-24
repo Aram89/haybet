@@ -1,3 +1,4 @@
+<%@page import="org.proffart.bet.service.UserService"%>
 <%@ page session="true"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -51,7 +52,7 @@
 									<form:form method="POST" modelAttribute="user">
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-user"></i></span>
-											<input class="form-control" type="text" placeholder="Nick Name" name="nickName">
+											<input class="form-control" type="text" placeholder="Nick Name" name="nickName" value="<%= UserService.getCurrentUser().getNickName() %>">
 										</div>
 										<div class="input-group">
 											<span class="input-group-addon"><i class="fa fa-key"></i></span>
