@@ -7,12 +7,24 @@
 				<ul class="nav nav-pills nav-stacked">
 					<li class="nav-header nav-header-first hidden-sm hidden-xs"> Navigation</li>
 					<li class="active">
-						<a href="<c:url value="/games"/>">
-							<i class="fa fa-th-large"></i>
-							<span>Games</span>
+						<a href="<c:url value="/"/>">
+							<i class="fa fa-home"></i>
+							<span>Home</span>
 						</a>
 					</li>
-					
+					<li>
+						<a href="<c:url value="/games"/>">
+							<i class="fa fa-th-large"></i>
+							<span>All Games</span>
+						</a>
+					</li>
+					<li>
+						<a href="<c:url value="/results"/>">
+							<i class="fa fa-th-large"></i>
+							<span>Results</span>
+						</a>
+					</li>
+					<% if(false) { %>
 					<li>
 						<a href="index-2.html"> 
 							<i class="fa fa-dashboard"></i> <span>Dashboard</span> <span class="label label-primary label-circle pull-right">28</span>
@@ -143,6 +155,7 @@
 					<li><a href="angularjs/index.html"> <i
 							class="fa fa-google"></i> <span>AngularJS Demo</span>
 					</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</div>
