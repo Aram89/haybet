@@ -91,6 +91,11 @@ public class UserController {
 		return new ModelAndView("user/user-profile", "bets", betService.getBetsPerUser(10));
 	}
 	
+	@RequestMapping(value="user-bets", method = RequestMethod.GET)
+	public ModelAndView showUserAllBets(ModelMap model) {
+		return new ModelAndView("user/all-bets", "bets", betService.getBetsPerUser(-1));
+	}
+	
 	
 	
 }
