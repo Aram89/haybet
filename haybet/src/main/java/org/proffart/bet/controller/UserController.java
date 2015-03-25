@@ -2,6 +2,7 @@ package org.proffart.bet.controller;
 import javax.validation.Valid;
 
 import org.proffart.bet.domain.User;
+import org.proffart.bet.service.BetService;
 import org.proffart.bet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	BetService betService;
 	//private static final Logger log = Logger.getLogger(BetController.class);
 	//@Autowired
 	//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -83,8 +87,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value="user-profile", method = RequestMethod.GET)
-	public String showUserProfile(ModelMap model) {
-		return "user/user-profile";
+	public ModelAndView showUserProfile(ModelMap model) {
+		return new ModelAndView("user/user-profile", "bets", betService.getBetsPerUser(10));
 	}
 	
 	
