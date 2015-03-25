@@ -98,6 +98,7 @@ window._BALANCE = <%= balance %>;
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="<c:url value="/user-profile" />"><i class="fa fa-user"></i>Profile</a></li>
+							<li><a href="<c:url value="/user-bets" />"><i class="fa fa-user"></i>All Bets</a></li>
 <!-- 							<li><a href="#"><i class="fa fa-cog"></i>Settings</a></li> -->
 <!-- 							<li><a href="#"><i class="fa fa-envelope-o"></i>Messages</a></li> -->
 <!-- 							<li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li> -->
