@@ -1,5 +1,6 @@
 package org.proffart.bet.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -79,7 +80,11 @@ public class BetService {
         dao.updateBetGroupStatus(betGroup, status);
     }
 
-    public List<UserBets> getBetsPerUser (Integer userId) {
-        return dao.getBetsPerUser(userId);
+    public List<UserBets> getBetsPerUser(Integer limit) {
+    	if(UserService.isLogined()) {
+            return dao.getBetsPerUser(UserService.getCurrentUser().getId(), limit);
+    	} else {
+    		return new ArrayList<UserBets>();
+    	}
     }
 }
