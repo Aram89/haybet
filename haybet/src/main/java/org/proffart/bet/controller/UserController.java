@@ -44,7 +44,7 @@ public class UserController {
 		if (userService.checkCredentials(user.getNickName(), user.getPassword())){
 			user = userService.getUserByNickName(user.getNickName());
 			model.addAttribute("userobj", user);
-			return "redirect:/user-profile";
+			return "redirect:/";
 			//return new ModelAndView("bets", "user", user);
 		}
 		User guest = UserService.getGuest();
