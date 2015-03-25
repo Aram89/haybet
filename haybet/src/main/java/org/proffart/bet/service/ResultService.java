@@ -25,6 +25,9 @@ public class ResultService {
 
     @Autowired
     BetService betService;
+
+    @Autowired
+    UserService userService;
 		
 	public void addResult(Result result){
 		dao.saveResult(result);
@@ -110,6 +113,8 @@ public class ResultService {
                     BetGroup betGroup = betService.getBetGroup(betId);
                      if (betGroup.getFinishedBetsCount() == betGroup.getBetsCount()){
                          betService.updateBetGroupStatus(betGroup, "OK");
+                         User user = UserService.getCurrentUser();
+                         userService.credit(user, betGroup.getAmount()* betGroup.getCoefficient());
                      }
                 }
                 else {
