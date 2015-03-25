@@ -14,12 +14,12 @@ public interface BetDAO {
 
     public void updateStatus(Integer id, String status);
     public Integer createGroup(Integer userID, Double amount, Double coefficient, Integer betsCount);
-    public Integer createBet(Integer groupID, Integer gameID, String betType);
+    public void createBet(Integer groupID, Integer gameID, String betType);
     public Map<Integer,List<Bet>> getBets();
     public void incrementFinishedBetsCount (Integer id);
     public BetGroup getBetGroup (Integer betId);
     public void updateBetGroupStatus (BetGroup betGroup, String status);
-    public List<UserBets> getBetsPerUser (Integer userId);
+    public List<UserBets> getBetsPerUser (Integer userId, Integer limit);
 
 
 }
