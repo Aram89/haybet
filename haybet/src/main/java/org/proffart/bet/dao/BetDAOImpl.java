@@ -139,16 +139,18 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         update(hqlUpdate, params);
     }
 
-    public List<UserBets> getBetsPerUser(Integer userId) {
+    public List<UserBets> getBetsPerUser(Integer userId, Integer limit) {
         String sql = "SELECT game.`name_ru`, `bet_group`.`coefficient`, `bet_group`.`status`, `bet_group`.`amount`,game.`date`" +
                 " FROM bet JOIN `bet_group` ON bet.`bet_group_id`=`bet_group`.`id`" +
-                " JOIN game ON bet.`game_id`=game.`id` WHERE `bet_group`.`user_id`= :id  ORDER BY `bet_group`.`id` ";
+                " JOIN game ON bet.`game_id`=game.`id` WHERE `bet_group`.`user_id`= :id  ORDER BY `bet_group`.`id` DESC LIMIT 0, 10 ";
         Query query = getSession().createSQLQuery(sql).
                 addScalar("name_ru", StringType.INSTANCE).
                 addScalar("coefficient", DoubleType.INSTANCE).
                 addScalar("status", StringType.INSTANCE).
                 addScalar("amount", DoubleType.INSTANCE).
                 addScalar("date", DateType.INSTANCE);
+        //query.setFirstResult(1);
+        //query.setMaxResults(limit);
         query.setParameter("id", userId);
         List results = query.list();
         List<UserBets> userBets = new ArrayList<UserBets>();
