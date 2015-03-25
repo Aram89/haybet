@@ -1,10 +1,18 @@
 package org.proffart.bet.dao;
 
 import java.sql.Date;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
@@ -17,9 +25,6 @@ import org.proffart.bet.domain.Game;
 import org.proffart.bet.domain.UserBets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.hibernate.*;
-
-import javax.jws.soap.SOAPBinding;
 
 @Repository
 public class BetDAOImpl extends AbstractDAO implements BetDAO {
@@ -53,13 +58,12 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         betGroup.setBetsCount(betsCount);
         betGroup.setFinishedBetsCount(0);
         betGroup.setStatus(WAIT);
-        getSession().save(betGroup);
+        getSession().persist(betGroup);
         groupID = betGroup.getID();
         return groupID;
     }
 
-    public Integer createBet(Integer groupID, Integer gameID, String betType) {
-        int betID = 0;
+    public void createBet(Integer groupID, Integer gameID, String betType) {
         Bet bet = new Bet();
         bet.setBetGroupID(groupID);
         bet.setGameID(gameID);
@@ -67,8 +71,6 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
         bet.setIsFinished(false);
         bet.setStatus(WAIT);
         getSession().save(bet);
-        betID = bet.getID();
-        return betID;
     }
 
     public Map<Integer, List<Bet>> getBets() {
@@ -142,7 +144,10 @@ public class BetDAOImpl extends AbstractDAO implements BetDAO {
     public List<UserBets> getBetsPerUser(Integer userId, Integer limit) {
         String sql = "SELECT game.`name_ru`, `bet_group`.`coefficient`, `bet_group`.`status`, `bet_group`.`amount`,game.`date`" +
                 " FROM bet JOIN `bet_group` ON bet.`bet_group_id`=`bet_group`.`id`" +
-                " JOIN game ON bet.`game_id`=game.`id` WHERE `bet_group`.`user_id`= :id  ORDER BY `bet_group`.`id` DESC LIMIT 0, 10 ";
+                " JOIN game ON bet.`game_id`=game.`id` WHERE `bet_group`.`user_id`= :id  ORDER BY `bet_group`.`id` DESC ";
+        if(limit > 0) {
+        	sql += "LIMIT 0, " + limit.toString();
+        }
         Query query = getSession().createSQLQuery(sql).
                 addScalar("name_ru", StringType.INSTANCE).
                 addScalar("coefficient", DoubleType.INSTANCE).
