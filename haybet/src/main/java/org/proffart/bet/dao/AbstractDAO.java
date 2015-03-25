@@ -1,13 +1,11 @@
 package org.proffart.bet.dao;
 
+import java.util.Map;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cache.spi.TransactionalDataRegion;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.transaction.Transaction;
-import java.util.Map;
-import org.hibernate.*;
 
 
 public class AbstractDAO {
