@@ -51,6 +51,7 @@ public class BetController {
 			e.printStackTrace();
 		}
 		return games;
+
 	}
 	
 	@RequestMapping(value="games/last", method=RequestMethod.GET)
@@ -65,7 +66,7 @@ public class BetController {
 		return betJSON;
 	}
 
-    @RequestMapping(value = "userbets", params = { "userID" }, method = RequestMethod.GET)
+    @RequestMapping(value = "userbets",params = {"userID"}, method = RequestMethod.GET)
     public ModelAndView getUserBets( @RequestParam(value = "userID") String userID) {
         List<UserBets> userBets = null;
         try {
