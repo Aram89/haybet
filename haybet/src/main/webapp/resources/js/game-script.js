@@ -39,13 +39,17 @@ $(function($) {
 		}
 		contentElement.html(html);
 		contentElement.find('.action').click(function(){
-			var el = $(this);
-			var data = el.data();
-			var gameData = el.closest('.main-box').find('header').data();
-			data.gameId = gameData.id;
-			data.gameName = gameData.name;
-			data.key = data.gameId + '-' + data.betType;
-			addToBetList(data);
+			if(window._IS_LOGINED) {
+				var el = $(this);
+				var data = el.data();
+				var gameData = el.closest('.main-box').find('header').data();
+				data.gameId = gameData.id;
+				data.gameName = gameData.name;
+				data.key = data.gameId + '-' + data.betType;
+				addToBetList(data);
+			} else {
+				betContent.html('<p style="font-size: 14px;">You can not bet,<br>Please <a href="'+window._REGISTRATION_PAGE+'">register</a> or <a href="'+window._LOGIN_PAGE+'">login</a> your account</p>');
+			}
 		});
 		contentElement.find('.show-hide-content').click(function(){
 			var el = $(this);
@@ -413,6 +417,57 @@ $(function($) {
 		}
 		if(subBox) {
 			box += '<br/><div class="name"> Тотал ком.2 </div>';
+			box += subBox;
+		}
+		subBox = '';
+		if(data['t_t1_s_yes'] && data['t_t1_s_no']) {
+			
+			subBox += '<div class="btn-group btn-group-justified">';
+			subBox += '<div class="btn-group">';
+			subBox += getRowBtn('t_t1_s_yes', data['t_t1_s_yes'], toCoefficientSting('t_t1_s_yes'));
+			subBox += '</div>';
+			
+			subBox += '<div class="btn-group">';
+			subBox += getRowBtn('t_t1_s_no', data['t_t1_s_no'], toCoefficientSting('t_t1_s_no'));
+			subBox += '</div>';
+			subBox += '</div>';
+		}
+		if(subBox) {
+			box += '<br/><div class="name"> Гол во 1-ом тайме </div>';
+			box += subBox;
+		}
+		subBox = '';
+		if(data['t_t2_s_yes'] && data['t_t2_s_no']) {
+			
+			subBox += '<div class="btn-group btn-group-justified">';
+			subBox += '<div class="btn-group">';
+			subBox += getRowBtn('t_t2_s_yes', data['t_t2_s_yes'], toCoefficientSting('t_t2_s_yes'));
+			subBox += '</div>';
+			
+			subBox += '<div class="btn-group">';
+			subBox += getRowBtn('t_t2_s_no', data['t_t2_s_no'], toCoefficientSting('t_t2_s_no'));
+			subBox += '</div>';
+			subBox += '</div>';
+		}
+		if(subBox) {
+			box += '<br/><div class="name"> Гол во 2-ом тайме </div>';
+			box += subBox;
+		}
+		subBox = '';
+		if(data['t_s_yes'] && data['t_s_no']) {
+			
+			subBox += '<div class="btn-group btn-group-justified">';
+			subBox += '<div class="btn-group">';
+			subBox += getRowBtn('t_s_yes', data['t_s_yes'], toCoefficientSting('t_s_yes'));
+			subBox += '</div>';
+			
+			subBox += '<div class="btn-group">';
+			subBox += getRowBtn('t_s_no', data['t_s_no'], toCoefficientSting('t_s_no'));
+			subBox += '</div>';
+			subBox += '</div>';
+		}
+		if(subBox) {
+			box += '<br/><div class="name"> Гол в обоих таймах </div>';
 			box += subBox;
 		}
 		subBox = '';
