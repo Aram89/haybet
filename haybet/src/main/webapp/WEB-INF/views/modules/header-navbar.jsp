@@ -10,6 +10,9 @@
 <!--
 window._URL = '<c:url value="/"/>';
 window._BALANCE = <%= balance %>;
+window._IS_LOGINED = <%= UserService.isLogined() ? "true" : "false" %>;
+window._LOGIN_PAGE = '<c:url value="/login" />';
+window._REGISTRATION_PAGE = '<c:url value="/register" />';
 //-->
 </script>
 <header class="navbar" id="header-navbar">
